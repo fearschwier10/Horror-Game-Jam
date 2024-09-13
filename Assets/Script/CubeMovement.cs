@@ -15,6 +15,8 @@ public class CubeMovement : MonoBehaviour
         rb.useGravity = false;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
+        rb.freezeRotation = true;
+
         // Get the main camera
         mainCamera = Camera.main;
     }
