@@ -9,23 +9,29 @@ public class MonsterAITest : MonoBehaviour
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
-    private bool isChasing;
+    public enum MonsterStates
+    {
+        Patroling = 0, 
+        Chasing = 1, 
+        KillPlayer = 2,
+    }
+    public MonsterStates state;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         currentPatrolIndex = 0;
-        isChasing = false;
+        state = MonsterStates.Patroling;
         GoToNextPatrolPoint();
     }
 
     void Update()
     {
-        if (isChasing)
+        if (state == MonsterStates.Chasing)
         {
             ChasePlayer();
         }
-        else
+        else if (state == MonsterStates.Patroling)
         {
             Patrol();
             CheckForPlayer();
@@ -54,7 +60,7 @@ public class MonsterAITest : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceToPlayer < detectionRange)
         {
-            isChasing = true;
+            state = MonsterStates.Chasing;
         }
     }
 
@@ -65,9 +71,15 @@ public class MonsterAITest : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceToPlayer > detectionRange)
         {
-            isChasing = false;
+            state = MonsterStates.Patroling;
             GoToNextPatrolPoint();
         }
     }
+    public void TeleportMonster(Transform trans) => TeleportMonster(trans.position);
+    public void TeleportMonster(Vector3 Position)
+    {
+        transform.position = Position;
+    }
+
 }
 
