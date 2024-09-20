@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5622584317628323458, guid: 9c43c6ea4a33275488b7e6bbad33363e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -3070100906314964191, guid: 56750626f1734bc4e8ea22a553c53d2f, type: 3}
+    - target: {fileID: 5622584317628323458, guid: 9c43c6ea4a33275488b7e6bbad33363e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 6325862548747893555, guid: 56750626f1734bc4e8ea22a553c53d2f, type: 3}
+    - target: {fileID: 5622584317628323458, guid: 9c43c6ea4a33275488b7e6bbad33363e, type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7574449120723569063, guid: 9c43c6ea4a33275488b7e6bbad33363e, type: 3}
       propertyPath: m_Name
       value: Realistic Tree Variant

@@ -6,3 +6,4 @@ UserSettings
 Temp
 .vs
 Assembly-CSharp.csproj
+*.csproj
