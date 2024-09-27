@@ -6,6 +6,15 @@ public class TriggerDialogue : MonoBehaviour
 {
     public TextAsset NewText;
     private DialogueText DialogueSystem;
+    [SerializeField]
+    [Tooltip("Tells if Dialogue has repeated before")]
+    private bool Repeat;
+    [SerializeField]
+    [Tooltip("Tells if Dialogue has triggered before")]
+    private bool HasTriggered;
+    [SerializeField]
+    [Tooltip("Tells if Player has been locked")]
+    private bool LockPlayer;
     private void Awake()
     {
         DialogueSystem = FindObjectOfType<DialogueText>();
@@ -13,8 +22,23 @@ public class TriggerDialogue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")){
-            DialogueSystem.SetText(NewText);
+        if (other.gameObject.CompareTag("Player")&&!DialogueSystem.IsActive)
+        {
+            if (Repeat)
+            {
+                DialogueSystem.SetText(NewText, LockPlayer);
+
+            }
+            else
+            { 
+                if (!HasTriggered)
+                {
+                    DialogueSystem.SetText(NewText, LockPlayer);
+                    HasTriggered = true;
+                }
+            }
+            
+            
         }
     }
 }

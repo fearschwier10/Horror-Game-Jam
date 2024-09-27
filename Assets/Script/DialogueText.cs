@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogueText : MonoBehaviour
 {
+    CubeMovement PlayerMovement;
     public TextAsset text;
     public TMP_Text TMP_Text;
     public Image panel;
@@ -13,13 +15,22 @@ public class DialogueText : MonoBehaviour
 
     private Coroutine typingCoroutine;
 
+    public bool IsActive => TMP_Text.enabled;
+    public UnityEvent OnDialogueStart;
+    public UnityEvent OnDialogueEnd;
+
+    private void Awake()
+    {
+        PlayerMovement = FindObjectOfType<CubeMovement>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         DisableText();
     }
 
-    public void SetText(TextAsset newText)
+    public void SetText(TextAsset newText, bool LockPlayer)
     {
         text = newText;
         // Start typing effect
@@ -31,6 +42,14 @@ public class DialogueText : MonoBehaviour
         TMP_Text.enabled = true;
         panel.enabled = true;
         typingCoroutine = StartCoroutine(TypeText()); // Start typing the new text
+        
+        OnDialogueStart.Invoke();
+        if (LockPlayer)
+        {
+            //PlayerMovement.LockMovement
+            Debug.Log("Locking Movement");
+        }
+
     }
 
     IEnumerator TypeText()
@@ -50,6 +69,7 @@ public class DialogueText : MonoBehaviour
         {
             StopCoroutine(typingCoroutine); // Stop typing effect if active
         }
+        OnDialogueEnd.Invoke();
     }
 
     private void Update()
