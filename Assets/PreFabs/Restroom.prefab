@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2792687721706738052}
   - component: {fileID: 8372704185718611407}
   - component: {fileID: 410349162613394336}
+  - component: {fileID: 8093599807477784019}
   m_Layer: 0
   m_Name: Restroom
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.910594, y: 1, z: 19.39}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 11.071324, y: 2.9451969, z: 1.8381}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7504184871172597725}
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 933af58369e69ba48b1c2aae2a848736, type: 2}
+  - {fileID: 2100000, guid: 1d2dc7638a52eca469be56f693b23809, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,6 +108,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &8093599807477784019
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784051334659189991}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &5670082568420215347
 PrefabInstance:
   m_ObjectHideFlags: 0
