@@ -17,6 +17,7 @@ public class DialogueText : MonoBehaviour
 
     public void SetText(TextAsset newtext)
     {
+        Debug.Log("Started text " + newtext);
         text= newtext;
         //references TMP_Text
         TMP_Text.text = text.text;
@@ -30,7 +31,7 @@ public class DialogueText : MonoBehaviour
     }
     private void Update()
     {
-        if (TMP_Text.enabled)
+        if (TMP_Text != null && TMP_Text.enabled)
         {
             if (Input.GetMouseButtonDown(0))
             {
