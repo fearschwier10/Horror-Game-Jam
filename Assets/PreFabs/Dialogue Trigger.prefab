@@ -119,3 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NewText: {fileID: 4900000, guid: 410f23779faa37c41a37c2a2990f0950, type: 3}
+  Repeat: 0
+  HasTriggered: 0
+  LockPlayer: 0
