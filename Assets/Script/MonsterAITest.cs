@@ -1,18 +1,25 @@
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class MonsterAITest : MonoBehaviour
 {
-    public Transform[] patrolPoints; // Array of patrol points
-    public float detectionRange = 10f; // Range within which the monster detects the player
-    public Transform player; // Reference to the player's transform
+    public Transform[] patrolPoints;
+    public float detectionRange = 10f;
+    public Transform player;
+    public GameObject gameOverUI;
+
+    // Audio Clips
+    public AudioClip chaseSound;  // Sound when chasing
+    public AudioClip killSound;   // Sound when killing the player
+    private AudioSource audioSource;  // Reference to the AudioSource component
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
     public enum MonsterStates
     {
-        Patroling = 0, 
-        Chasing = 1, 
+        Patroling = 0,
+        Chasing = 1,
         KillPlayer = 2,
     }
     public MonsterStates state;
@@ -20,9 +27,11 @@ public class MonsterAITest : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();  // Get the AudioSource component
         currentPatrolIndex = 0;
         state = MonsterStates.Patroling;
         GoToNextPatrolPoint();
+        gameOverUI.SetActive(false);
     }
 
     void Update()
@@ -61,6 +70,7 @@ public class MonsterAITest : MonoBehaviour
         if (distanceToPlayer < detectionRange)
         {
             state = MonsterStates.Chasing;
+            PlayChaseSound();  // Play chase sound
         }
     }
 
@@ -75,11 +85,55 @@ public class MonsterAITest : MonoBehaviour
             GoToNextPatrolPoint();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Monster hit the player!");
+            state = MonsterStates.KillPlayer;
+            PlayKillSound();  // Play kill sound
+            GameOver();
+        }
+    }
+
+    void PlayChaseSound()
+    {
+        if (chaseSound != null)
+        {
+            audioSource.clip = chaseSound;
+            audioSource.Play();
+        }
+    }
+
+    void PlayKillSound()
+    {
+        if (killSound != null)
+        {
+            audioSource.clip = killSound;
+            audioSource.Play();
+        }
+    }
+
+    void GameOver()
+    {
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void TeleportMonster(Transform trans) => TeleportMonster(trans.position);
     public void TeleportMonster(Vector3 Position)
     {
         transform.position = Position;
     }
-
 }
-
