@@ -1,6 +1,6 @@
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 public class MonsterAITest : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class MonsterAITest : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();  // Get the AudioSource component
+        audioSource = GetComponent<AudioSource>();
         currentPatrolIndex = 0;
         state = MonsterStates.Patroling;
         GoToNextPatrolPoint();
@@ -86,9 +86,10 @@ public class MonsterAITest : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // Change to OnTriggerEnter
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Monster hit the player!");
             state = MonsterStates.KillPlayer;
@@ -129,11 +130,5 @@ public class MonsterAITest : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void TeleportMonster(Transform trans) => TeleportMonster(trans.position);
-    public void TeleportMonster(Vector3 Position)
-    {
-        transform.position = Position;
     }
 }
