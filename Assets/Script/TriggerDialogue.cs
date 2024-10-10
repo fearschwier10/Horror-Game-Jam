@@ -15,6 +15,7 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField]
     [Tooltip("Tells if Player has been locked")]
     private bool LockPlayer;
+
     private void Awake()
     {
         DialogueSystem = FindObjectOfType<DialogueText>();
@@ -22,23 +23,21 @@ public class TriggerDialogue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")&&!DialogueSystem.IsActive)
+        if (other.gameObject.CompareTag("Player") && !DialogueSystem.IsActive)
         {
             if (Repeat)
             {
                 DialogueSystem.SetText(NewText, LockPlayer);
-
             }
             else
-            { 
+            {
                 if (!HasTriggered)
                 {
                     DialogueSystem.SetText(NewText, LockPlayer);
                     HasTriggered = true;
                 }
             }
-            
-            
         }
     }
 }
+

@@ -14,6 +14,7 @@ public class DialogueText : MonoBehaviour
     public float typingSpeed = 0.05f; // Speed of typing effect
 
     private Coroutine typingCoroutine;
+    private bool lockPlayer;
 
     public bool IsActive => TMP_Text.enabled;
     public UnityEvent OnDialogueStart;
@@ -24,7 +25,6 @@ public class DialogueText : MonoBehaviour
         PlayerMovement = FindObjectOfType<CubeMovement>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         DisableText();
@@ -33,6 +33,8 @@ public class DialogueText : MonoBehaviour
     public void SetText(TextAsset newText, bool LockPlayer)
     {
         text = newText;
+        lockPlayer = LockPlayer; // Store whether to lock the player
+
         // Start typing effect
         if (typingCoroutine != null)
         {
@@ -42,14 +44,12 @@ public class DialogueText : MonoBehaviour
         TMP_Text.enabled = true;
         panel.enabled = true;
         typingCoroutine = StartCoroutine(TypeText()); // Start typing the new text
-        
-        OnDialogueStart.Invoke();
-        if (LockPlayer)
-        {
-            //PlayerMovement.LockMovement
-            Debug.Log("Locking Movement");
-        }
 
+        OnDialogueStart.Invoke();
+        if (lockPlayer)
+        {
+            LockPlayerMovement(); // Lock the player's movement
+        }
     }
 
     IEnumerator TypeText()
@@ -58,6 +58,12 @@ public class DialogueText : MonoBehaviour
         {
             TMP_Text.text += letter;
             yield return new WaitForSeconds(typingSpeed); // Wait between each letter
+        }
+
+        // Once the typing is done, unlock the player's movement if needed
+        if (lockPlayer)
+        {
+            UnlockPlayerMovement();
         }
     }
 
@@ -70,13 +76,36 @@ public class DialogueText : MonoBehaviour
             StopCoroutine(typingCoroutine); // Stop typing effect if active
         }
         OnDialogueEnd.Invoke();
+
+        if (lockPlayer)
+        {
+            UnlockPlayerMovement(); // Ensure player movement is unlocked when the text is closed
+        }
+    }
+
+    private void LockPlayerMovement()
+    {
+        if (PlayerMovement != null)
+        {
+            PlayerMovement.enabled = false; // Disable movement script
+            Debug.Log("Player movement locked.");
+        }
+    }
+
+    private void UnlockPlayerMovement()
+    {
+        if (PlayerMovement != null)
+        {
+            PlayerMovement.enabled = true; // Enable movement script
+            Debug.Log("Player movement unlocked.");
+        }
     }
 
     private void Update()
     {
         if (TMP_Text.enabled)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) // Close dialogue on mouse click
             {
                 DisableText();
             }
