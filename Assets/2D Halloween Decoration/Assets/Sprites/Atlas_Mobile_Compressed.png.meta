@@ -1,0 +1,1965 @@
+fileFormatVersion: 2
+guid: b16755a802c1e6745980e8b652663dbf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Fence_1
+  - first:
+      213: 21300002
+    second: Fence_4
+  - first:
+      213: 21300004
+    second: Spider web_3
+  - first:
+      213: 21300006
+    second: Spider web_2
+  - first:
+      213: 21300008
+    second: Spider web_1
+  - first:
+      213: 21300010
+    second: Bat
+  - first:
+      213: 21300012
+    second: Jack o lantern_1_V1
+  - first:
+      213: 21300014
+    second: Jack o lantern_1_V2
+  - first:
+      213: 21300016
+    second: Jack o lantern_1_V3
+  - first:
+      213: 21300018
+    second: Tree_5_V2
+  - first:
+      213: 21300020
+    second: Tree_5_V3
+  - first:
+      213: 21300022
+    second: Tree_5_V1
+  - first:
+      213: 21300024
+    second: Spider web_4
+  - first:
+      213: 21300026
+    second: Eyes_2_green
+  - first:
+      213: 21300028
+    second: Eyes_2_red
+  - first:
+      213: 21300030
+    second: Eyes_2_blue
+  - first:
+      213: 21300032
+    second: Eyes_2_yellow
+  - first:
+      213: 21300034
+    second: Eyes_2_violet
+  - first:
+      213: 21300036
+    second: Spider
+  - first:
+      213: 21300038
+    second: Tree_4
+  - first:
+      213: 21300040
+    second: Tree_1
+  - first:
+      213: 21300042
+    second: Tree_3
+  - first:
+      213: 21300044
+    second: Witch hat_1
+  - first:
+      213: 21300046
+    second: Eyes_1_violet
+  - first:
+      213: 21300048
+    second: Jack o lantern_2
+  - first:
+      213: 21300050
+    second: Jack o lantern_3
+  - first:
+      213: 21300052
+    second: House
+  - first:
+      213: 21300054
+    second: Eyes_1_blue
+  - first:
+      213: 21300056
+    second: Eyes_1_green
+  - first:
+      213: 21300058
+    second: Eyes_1_yellow
+  - first:
+      213: 21300060
+    second: Eyes_1_red
+  - first:
+      213: 21300062
+    second: Tree_2
+  - first:
+      213: 21300064
+    second: Spider web_5
+  - first:
+      213: 21300066
+    second: Pumpkin_1
+  - first:
+      213: 21300068
+    second: Broom_2
+  - first:
+      213: 21300070
+    second: Owl
+  - first:
+      213: 21300072
+    second: Tombstone_2_V1
+  - first:
+      213: 21300074
+    second: Candy_1_V2
+  - first:
+      213: 21300076
+    second: Candy_1_V1
+  - first:
+      213: 21300078
+    second: Candy_1_V3
+  - first:
+      213: 21300080
+    second: Broom_1
+  - first:
+      213: 21300082
+    second: Pumpkin_3
+  - first:
+      213: 21300084
+    second: Candy_3
+  - first:
+      213: 21300086
+    second: Candle_3
+  - first:
+      213: 21300088
+    second: Tombstone_3_V1
+  - first:
+      213: 21300090
+    second: Pumpkin_2
+  - first:
+      213: 21300092
+    second: Witch hat_2
+  - first:
+      213: 21300094
+    second: Eyes_4
+  - first:
+      213: 21300096
+    second: Mouth_1
+  - first:
+      213: 21300098
+    second: Loli_2_V3
+  - first:
+      213: 21300100
+    second: Eyes_3_red
+  - first:
+      213: 21300102
+    second: Eyes_3_yellow
+  - first:
+      213: 21300104
+    second: Loli_1_V1
+  - first:
+      213: 21300106
+    second: Mouth_2
+  - first:
+      213: 21300108
+    second: Loli_2_V2
+  - first:
+      213: 21300110
+    second: Eyes_3_blue
+  - first:
+      213: 21300112
+    second: Loli_2_V1
+  - first:
+      213: 21300114
+    second: Tombstone_3_V2
+  - first:
+      213: 21300116
+    second: Loli_1_V3
+  - first:
+      213: 21300118
+    second: Eyes_3_green
+  - first:
+      213: 21300120
+    second: Loli_1_V2
+  - first:
+      213: 21300122
+    second: Tombstone_2_V2
+  - first:
+      213: 21300124
+    second: Eyes_3_violet
+  - first:
+      213: 21300126
+    second: Fence_3
+  - first:
+      213: 21300128
+    second: Cauldron_V1
+  - first:
+      213: 21300130
+    second: Cauldron_V2
+  - first:
+      213: 21300132
+    second: Cauldron_V3
+  - first:
+      213: 21300134
+    second: Tombstone_1_V1
+  - first:
+      213: 21300136
+    second: Candy_2
+  - first:
+      213: 21300138
+    second: Candle_1
+  - first:
+      213: 21300140
+    second: Fence_2
+  - first:
+      213: 21300142
+    second: Tombstone_1_V2
+  - first:
+      213: 21300144
+    second: Candle_2
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fence_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 256
+        height: 209
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42105263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fecf662f57446564ead000253590543d
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_4
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1
+        width: 256
+        height: 147
+      alignment: 9
+      pivot: {x: 0.5, y: 0.60544217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71eb35651014f9a4eb34b80b84ef2ca2
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider web_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 212
+        width: 256
+        height: 254
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8fbe0f25dc7c947847b57ba851464b
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider web_2
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1
+        width: 255
+        height: 255
+      alignment: 9
+      pivot: {x: 0.49803922, y: 0.49803922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50cc7872a1ee98341aa652a6d807b08d
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider web_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 468
+        width: 255
+        height: 253
+      alignment: 9
+      pivot: {x: 0.49803922, y: 0.49407116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 986f61e5be094f2428eac02cdc0c1916
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bat
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 150
+        width: 138
+        height: 254
+      alignment: 9
+      pivot: {x: 0.5, y: 0.496063}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c676719c099bf478f11a498b84bd4a
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jack o lantern_1_V1
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 1
+        width: 241
+        height: 254
+      alignment: 9
+      pivot: {x: 0.4979253, y: 0.503937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4ecdd6ee532614781709e651f8992b
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jack o lantern_1_V2
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 468
+        width: 242
+        height: 254
+      alignment: 9
+      pivot: {x: 0.5, y: 0.503937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2e7089f0149e304aba5c9697de881ec
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jack o lantern_1_V3
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 1
+        width: 244
+        height: 254
+      alignment: 9
+      pivot: {x: 0.4918033, y: 0.503937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d97bfb58ade12a84b9098fb83c25de0c
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_5_V2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 723
+        width: 253
+        height: 248
+      alignment: 9
+      pivot: {x: 0.49802372, y: 0.4919355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ef70975cc6a584d965c5da62882295
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_5_V3
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 258
+        width: 253
+        height: 248
+      alignment: 9
+      pivot: {x: 0.49802372, y: 0.4919355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24cee8ab873304e4ab425c085936bb2f
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_5_V1
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 257
+        width: 253
+        height: 248
+      alignment: 9
+      pivot: {x: 0.49802372, y: 0.4919355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08e76bb6ac46174990ae487c5000ae7
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider web_4
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 1
+        width: 250
+        height: 251
+      alignment: 9
+      pivot: {x: 0.496, y: 0.49800798}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe64847269505824d907fcca71eb8717
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_2_green
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 724
+        width: 251
+        height: 83
+      alignment: 9
+      pivot: {x: 0.49800798, y: 0.60240966}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8be64533860dda947bcac93f756e8b59
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_2_red
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 973
+        width: 251
+        height: 84
+      alignment: 9
+      pivot: {x: 0.49800798, y: 0.61904764}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402985a403744a54fa9474fddfdbf8f1
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_2_blue
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 507
+        width: 251
+        height: 83
+      alignment: 9
+      pivot: {x: 0.49800798, y: 0.60240966}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99d02e4ce5823dc409f5f437277337b0
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_2_yellow
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 257
+        width: 251
+        height: 83
+      alignment: 9
+      pivot: {x: 0.49800798, y: 0.60240966}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 840a9da00833c2d4f8e651ce1f660fc5
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_2_violet
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 1
+        width: 251
+        height: 83
+      alignment: 9
+      pivot: {x: 0.49800798, y: 0.60240966}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0373c02215647e745bb4c55bc7cfb900
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 809
+        width: 251
+        height: 175
+      alignment: 9
+      pivot: {x: 0.49800798, y: 0.49714285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 207087d4fdf1be1458e3b6fc34befbbb
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1059
+        width: 220
+        height: 250
+      alignment: 9
+      pivot: {x: 0.47272727, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2993e5f2f5454eb4bb2ece6e431b07a6
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_1
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 507
+        width: 249
+        height: 249
+      alignment: 9
+      pivot: {x: 0.48594376, y: 0.5060241}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dacc2b2355e8d048b015c26dce220b1
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_3
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 254
+        width: 212
+        height: 249
+      alignment: 9
+      pivot: {x: 0.5141509, y: 0.502008}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500e6fb00c5e6c44c894711a806fba0a
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Witch hat_1
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 1
+        width: 249
+        height: 223
+      alignment: 9
+      pivot: {x: 0.49799198, y: 0.50224215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba856ece09fd07744b0e3d94767e9212
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_1_violet
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 508
+        width: 248
+        height: 81
+      alignment: 9
+      pivot: {x: 0.49596775, y: 0.50617284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 152e1ab5b13ceab4f99f790a60cba9ea
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jack o lantern_2
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 986
+        width: 202
+        height: 248
+      alignment: 9
+      pivot: {x: 0.5247525, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9d5fc5683c6c704493f55ed823d75fb
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jack o lantern_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1311
+        width: 248
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0550ae1331bca3c41ad02f31f3fc0e7b
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 592
+        width: 248
+        height: 244
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd49a682e62b5a440aeadf3c637aa8c1
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_1_blue
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 342
+        width: 248
+        height: 81
+      alignment: 9
+      pivot: {x: 0.49596775, y: 0.50617284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679b0e58ed6ee26429efd964af612799
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_1_green
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 505
+        width: 248
+        height: 81
+      alignment: 9
+      pivot: {x: 0.49596775, y: 0.50617284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 642adff65e6d1164486de42b6e37c5e4
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_1_yellow
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 86
+        width: 248
+        height: 81
+      alignment: 9
+      pivot: {x: 0.49596775, y: 0.50617284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a75689e13f098f4fbd870545b94f065
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_1_red
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 226
+        width: 248
+        height: 81
+      alignment: 9
+      pivot: {x: 0.49596775, y: 0.50617284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8ee5c967bcdb4447a27ebb69a239787
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_2
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 986
+        width: 212
+        height: 247
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4979757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2b5d75365594841a742b207171e9d5
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider web_5
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1236
+        width: 246
+        height: 242
+      alignment: 9
+      pivot: {x: 0.49186993, y: 0.4876033}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd818ac122015234896b2fbc78ca4740
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1555
+        width: 246
+        height: 208
+      alignment: 9
+      pivot: {x: 0.50406504, y: 0.49519232}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dde0fbf04ac9be48a3483f1dcf189b2
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broom_2
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 150
+        width: 86
+        height: 246
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5d2ebb4ad55094f9e4564cd1e104ee
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Owl
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 758
+        width: 152
+        height: 246
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49593496}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa8e86dfb11381d48b3b21ee50fc8754
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tombstone_2_V1
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 588
+        width: 205
+        height: 245
+      alignment: 9
+      pivot: {x: 0.49268293, y: 0.5020408}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15be71af2610c0142b15f28600ef12c7
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_1_V2
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 309
+        width: 245
+        height: 240
+      alignment: 9
+      pivot: {x: 0.4979592, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a7a41f589d70c4f984376279e930da
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_1_V1
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 226
+        width: 245
+        height: 240
+      alignment: 9
+      pivot: {x: 0.4979592, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d4d077f6e46fa4bb9dd7821898c734
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_1_V3
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 1235
+        width: 245
+        height: 240
+      alignment: 9
+      pivot: {x: 0.4979592, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7ea1fc4e6da2da4f8a9aff63887ece5
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broom_1
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1480
+        width: 171
+        height: 244
+      alignment: 9
+      pivot: {x: 0.26900584, y: 0.49590164}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e84fc8631914324fb557afc787152ad
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1765
+        width: 158
+        height: 243
+      alignment: 9
+      pivot: {x: 0.49367088, y: 0.4979424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d563486a40a4924ab6f48b57e8d6fda
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_3
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 758
+        width: 232
+        height: 241
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4979253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f5ef07aad1d1745ae48821b3b294df
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candle_3
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 588
+        width: 239
+        height: 165
+      alignment: 9
+      pivot: {x: 0.50209206, y: 0.5090909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 279924c99274ad748bd154512e5965a2
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tombstone_3_V1
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 468
+        width: 237
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5063291, y: 0.51304346}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4163978bbf074478b20e37b8c6e6bb
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_2
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1006
+        width: 237
+        height: 215
+      alignment: 9
+      pivot: {x: 0.5063291, y: 0.48372093}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e72b88206e81014bb3d7c6dd1751838
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Witch hat_2
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 1477
+        width: 227
+        height: 236
+      alignment: 9
+      pivot: {x: 0.50660795, y: 0.5127119}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 986c7b2cb468fd044acb70375a294c3e
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_4
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 592
+        width: 231
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5021645, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b044ea124fa92d488ac7501878d9705
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouth_1
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 838
+        width: 231
+        height: 127
+      alignment: 9
+      pivot: {x: 0.4978355, y: 0.503937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ed9a70b4b321a498de9ac805d24b73
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loli_2_V3
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 1726
+        width: 101
+        height: 230
+      alignment: 9
+      pivot: {x: 0.4950495, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da0824b02904ec443ad0d35665c32c89
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_3_red
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 425
+        width: 230
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.51282054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5cd3631e142cf4f9313e0dd23adf5c
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_3_yellow
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 835
+        width: 230
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.51282054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d3bdc28278520545bc882b63df3c26a
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loli_1_V1
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1001
+        width: 96
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8f4b8cc131840458711a4d4783a66b
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouth_2
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 755
+        width: 163
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5398773, y: 0.5217391}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9df98885a53f540bb75ec842c1aa89
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loli_2_V2
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 700
+        width: 101
+        height: 230
+      alignment: 9
+      pivot: {x: 0.4950495, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a791b624a2aca54e9f16511365ab155
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_3_blue
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 1715
+        width: 230
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.51282054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 567806a48ec1be741803f4b27e56dae2
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loli_2_V1
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 1477
+        width: 101
+        height: 230
+      alignment: 9
+      pivot: {x: 0.4950495, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c0616c675e743940a4064c6eca79d9a
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tombstone_3_V2
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1001
+        width: 230
+        height: 224
+      alignment: 9
+      pivot: {x: 0.50869566, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cc3415f5e1d174fa1936b95839392a
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loli_1_V3
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 932
+        width: 96
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 002d56244a7eb4c4d8e9f43d1bae3308
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_3_green
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1958
+        width: 230
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.51282054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a341614c85a0a14e9ca9c85632ca255
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loli_1_V2
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 700
+        width: 96
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a43f4ce096c63d3459b8b7a74cf3ba6f
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tombstone_2_V2
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1715
+        width: 205
+        height: 230
+      alignment: 9
+      pivot: {x: 0.49268293, y: 0.4695652}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc96b8a5c7f2072428495b9b59c00ccf
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes_3_violet
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 1233
+        width: 230
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.51282054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f208000e87fa149b071c570e4a6f10
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_3
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1227
+        width: 225
+        height: 172
+      alignment: 9
+      pivot: {x: 0.4311111, y: 0.5116279}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcc21870a33a9604baccbae28e1db6db
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_V1
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 987
+        width: 224
+        height: 207
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49758455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 306a137ba3417a344aa44ff1bf48c69a
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_V2
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 932
+        width: 224
+        height: 207
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49758455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff188258f1a5d7468a9165497406d3d
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_V3
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 1795
+        width: 224
+        height: 217
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47465438}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f33aab6c505602c43afdb8bdb86c643e
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tombstone_1_V1
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1401
+        width: 223
+        height: 197
+      alignment: 9
+      pivot: {x: 0.49775785, y: 0.5076142}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e6c19cecb631147b0cbd03d8efd532
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_2
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 1227
+        width: 216
+        height: 208
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3538912330d2ffb48904ddccba44fc32
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candle_1
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1164
+        width: 215
+        height: 213
+      alignment: 9
+      pivot: {x: 0.49302325, y: 0.49295774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f3ebda779e45d54d8cfffea38cce1c9
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_2
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 1141
+        width: 197
+        height: 209
+      alignment: 9
+      pivot: {x: 0.35025382, y: 0.42105263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16c805ddf7aba97408398821b57ec887
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tombstone_1_V2
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 1600
+        width: 209
+        height: 181
+      alignment: 9
+      pivot: {x: 0.46411484, y: 0.4640884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4918ea3252f4e054dbc107abdf6fe350
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candle_2
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 700
+        width: 130
+        height: 203
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5221675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64aec62a6ca9594893b310262e956fd
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Bat: 21300010
+      Broom_1: 21300080
+      Broom_2: 21300068
+      Candle_1: 21300138
+      Candle_2: 21300144
+      Candle_3: 21300086
+      Candy_1_V1: 21300076
+      Candy_1_V2: 21300074
+      Candy_1_V3: 21300078
+      Candy_2: 21300136
+      Candy_3: 21300084
+      Cauldron_V1: 21300128
+      Cauldron_V2: 21300130
+      Cauldron_V3: 21300132
+      Eyes_1_blue: 21300054
+      Eyes_1_green: 21300056
+      Eyes_1_red: 21300060
+      Eyes_1_violet: 21300046
+      Eyes_1_yellow: 21300058
+      Eyes_2_blue: 21300030
+      Eyes_2_green: 21300026
+      Eyes_2_red: 21300028
+      Eyes_2_violet: 21300034
+      Eyes_2_yellow: 21300032
+      Eyes_3_blue: 21300110
+      Eyes_3_green: 21300118
+      Eyes_3_red: 21300100
+      Eyes_3_violet: 21300124
+      Eyes_3_yellow: 21300102
+      Eyes_4: 21300094
+      Fence_1: 21300000
+      Fence_2: 21300140
+      Fence_3: 21300126
+      Fence_4: 21300002
+      House: 21300052
+      Jack o lantern_1_V1: 21300012
+      Jack o lantern_1_V2: 21300014
+      Jack o lantern_1_V3: 21300016
+      Jack o lantern_2: 21300048
+      Jack o lantern_3: 21300050
+      Loli_1_V1: 21300104
+      Loli_1_V2: 21300120
+      Loli_1_V3: 21300116
+      Loli_2_V1: 21300112
+      Loli_2_V2: 21300108
+      Loli_2_V3: 21300098
+      Mouth_1: 21300096
+      Mouth_2: 21300106
+      Owl: 21300070
+      Pumpkin_1: 21300066
+      Pumpkin_2: 21300090
+      Pumpkin_3: 21300082
+      Spider: 21300036
+      Spider web_1: 21300008
+      Spider web_2: 21300006
+      Spider web_3: 21300004
+      Spider web_4: 21300024
+      Spider web_5: 21300064
+      Tombstone_1_V1: 21300134
+      Tombstone_1_V2: 21300142
+      Tombstone_2_V1: 21300072
+      Tombstone_2_V2: 21300122
+      Tombstone_3_V1: 21300088
+      Tombstone_3_V2: 21300114
+      Tree_1: 21300040
+      Tree_2: 21300062
+      Tree_3: 21300042
+      Tree_4: 21300038
+      Tree_5_V1: 21300022
+      Tree_5_V2: 21300018
+      Tree_5_V3: 21300020
+      Witch hat_1: 21300044
+      Witch hat_2: 21300092
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
