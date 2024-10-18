@@ -101,13 +101,28 @@ public class DialogueText : MonoBehaviour
         }
     }
 
+    private int clickCount = 0; // Track the number of clicks
+
     private void Update()
     {
         if (TMP_Text.enabled)
         {
-            if (Input.GetMouseButtonDown(0)) // Close dialogue on mouse click
+            if (Input.GetMouseButtonDown(0)) // Check for mouse click
             {
-                DisableText();
+                clickCount++; // Increment click count
+
+                if (clickCount == 1 && typingCoroutine != null)
+                {
+                    // Finish typing immediately on the first click
+                    StopCoroutine(typingCoroutine);
+                    TMP_Text.text = text.text; // Show full text
+                }
+                else if (clickCount == 2)
+                {
+                    // On the second click, disable text
+                    DisableText();
+                    clickCount = 0; // Reset click count after closing dialogue
+                }
             }
         }
     }
