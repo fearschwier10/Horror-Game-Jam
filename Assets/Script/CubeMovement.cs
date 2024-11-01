@@ -1,55 +1,103 @@
 using UnityEngine;
+using UnityEngine.UI;  // For UI components
 
 public class CubeMovement : MonoBehaviour
 {
-    public float speed = 5f;  // Speed variable for movement
-    public float gravity = -9.81f;  // Gravity force
-    public float groundCheckDistance = 0.1f;  // Distance to check if grounded
+    public float walkSpeed = 5f;
+    public float sprintSpeedMultiplier = 2f;
+    public float sprintDuration = 3f;
+    public float sprintCooldown = 5f;
 
-    private CharacterController characterController;  // Reference to the Character Controller
-    private Camera mainCamera;  // Reference to the main camera
-    private Vector3 movementVelocity;  // Store the movement velocity
-    private bool isGrounded;
+    private CharacterController controller;
+    private float speed;
+    private bool isSprinting;
+    private float sprintTimer;
+    private float cooldownTimer;
+
+    // UI Element
+    public Slider sprintSlider;  // Reference to the UI Slider
 
     void Start()
     {
-        // Get the Character Controller component attached to the player
-        characterController = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+        speed = walkSpeed;
+        isSprinting = false;
+        sprintTimer = 0f;
+        cooldownTimer = 0f;
 
-        // Get the main camera
-        mainCamera = Camera.main;
+        if (sprintSlider != null)
+        {
+            sprintSlider.maxValue = sprintDuration; // Set slider max to sprint duration
+            sprintSlider.value = sprintDuration; // Initialize slider to full
+        }
     }
 
     void Update()
     {
-        // Check if the player is grounded
-        isGrounded = characterController.isGrounded;
+        HandleSprint();
 
-        if (isGrounded && movementVelocity.y < 0)
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+
+        if (direction.magnitude >= 0.1f)
         {
-            movementVelocity.y = 0f;  // Reset the vertical velocity when grounded
+            Vector3 move = transform.right * horizontal + transform.forward * vertical;
+            controller.Move(move * speed * Time.deltaTime);
+        }
+    }
+
+    void HandleSprint()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && !isSprinting && cooldownTimer <= 0f)
+        {
+            StartSprint();
         }
 
-        // Get input for horizontal and vertical movement
-        float horizontal = Input.GetAxis("Horizontal");  // Left/Right or A/D
-        float vertical = Input.GetAxis("Vertical");      // Up/Down or W/S
+        // Check if sprint key is released while sprinting
+        if (Input.GetKeyUp(KeyCode.LeftShift) && isSprinting)
+        {
+            StopSprint();
+        }
 
-        // Calculate the movement direction relative to the camera
-        Vector3 right = mainCamera.transform.right;
-        Vector3 forward = mainCamera.transform.forward;
+        if (isSprinting)
+        {
+            sprintTimer -= Time.deltaTime;
+            if (sprintTimer <= 0f)
+            {
+                StopSprint();
+            }
+            UpdateSprintUI();
+        }
+        else if (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+            UpdateSprintUI(); // Update UI during cooldown as well
+        }
+    }
 
-        // Flatten the direction vectors to ignore vertical movement
-        right.y = 0;
-        forward.y = 0;
+    void StartSprint()
+    {
+        isSprinting = true;
+        speed = walkSpeed * sprintSpeedMultiplier;
+        sprintTimer = sprintDuration;
+        UpdateSprintUI(); // Update UI on sprint start
+    }
 
-        // Calculate the movement direction
-        Vector3 movement = (right * horizontal + forward * vertical).normalized * speed;
+    void StopSprint()
+    {
+        isSprinting = false;
+        speed = walkSpeed;
+        cooldownTimer = sprintCooldown; // Start cooldown only if sprint duration is over
+        UpdateSprintUI(); // Update UI on sprint stop
+    }
 
-        // Apply movement
-        characterController.Move(movement * Time.deltaTime);
-
-        // Apply gravity
-        movementVelocity.y += gravity * Time.deltaTime;
-        characterController.Move(movementVelocity * Time.deltaTime);
+    void UpdateSprintUI()
+    {
+        if (sprintSlider != null)
+        {
+            sprintSlider.value = isSprinting ? sprintTimer : Mathf.Max(0, sprintCooldown - cooldownTimer);
+            sprintSlider.maxValue = isSprinting ? sprintDuration : sprintCooldown;
+        }
     }
 }
