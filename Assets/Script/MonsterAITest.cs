@@ -19,6 +19,7 @@ public class MonsterAITest : MonoBehaviour
     public Animator animator; // Reference to the Animator component
 
     public bool shouldIdleOnTeleport = false; // Toggle to control idle behavior after teleport
+    private bool isActive = false; // Flag to control monster's activity
 
     public enum MonsterStates
     {
@@ -38,24 +39,37 @@ public class MonsterAITest : MonoBehaviour
         state = MonsterStates.Patroling;
         GoToNextPatrolPoint();
         gameOverUI.SetActive(false);
+        agent.isStopped = true; // Initially stop the monster
+        animator.SetBool("isMoving", false); // Ensure the moving animation is off initially
     }
 
     void Update()
     {
+        if (!isActive) // Check if the monster is not active
+        {
+            WatchPlayer(); // Watch the player while inactive
+            animator.SetBool("isMoving", false); // Ensure idle animation is played
+            return; // Skip the rest of the Update logic
+        }
+
         if (state == MonsterStates.Chasing)
         {
             ChasePlayer();
+            animator.SetBool("isMoving", true); // Set moving animation on
         }
         else if (state == MonsterStates.Patroling)
         {
             Patrol();
             CheckForPlayer();
+            animator.SetBool("isMoving", true); // Set moving animation on
         }
         else if (state == MonsterStates.Idle)
         {
             WatchPlayer(); // Watch the player while idling
+            animator.SetBool("isMoving", false); // Set moving animation off
         }
     }
+
 
     void Patrol()
     {
@@ -135,10 +149,20 @@ public class MonsterAITest : MonoBehaviour
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
+        Debug.Log("Restart Game button clicked!");
+        Time.timeScale = 1f;  // Resume time
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload the current scene
+    }
+
+    // Method to activate the monster
+    public void ActivateMonster()
+    {
+        isActive = true; // Set the monster to active
+        agent.isStopped = false; // Allow movement
+        state = MonsterStates.Patroling; // Start patrolling
+        GoToNextPatrolPoint(); // Move to the next patrol point
     }
 
     // Teleport the monster and handle idle behavior based on toggle
@@ -171,8 +195,5 @@ public class MonsterAITest : MonoBehaviour
         direction.y = 0; // Keep the rotation flat on the Y-axis
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2f);
-
-        // Optionally, do other idle behavior here
     }
 }
-
