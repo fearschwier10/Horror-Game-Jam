@@ -1,0 +1,35 @@
+LUX ART STUDIOS - ASSET LICENSE AGREEMENT
+
+1. Grant of License
+LUX ART STUDIOS ("Licensor") grants you ("Licensee") a non-exclusive, worldwide license to use, modify, and incorporate the assets ("Assets") in both commercial and non-commercial projects, under the following conditions:
+
+Attribution: The Licensee must provide visible credit to "LUX ART STUDIOS" within any project that incorporates the Assets.
+ This attribution should appear in the project’s credits or another suitable visible location, in a manner that is legible and prominent.
+2. Restrictions
+The Licensee is not permitted to:
+
+Redistribute, resell, or share the Assets in any form, whether individually or as part of another asset pack.
+Make the Assets available in any format that allows third parties to extract or download them separately from a project.
+3. Modifications
+Licensee is allowed to modify, adapt, and create derivative works of the Assets. However, the modified Assets remain subject to this license and all restrictions herein, including the attribution requirement.
+
+4. Non-transferability
+This license is non-transferable. This means the Licensee cannot transfer, assign, or sublicense the rights to any third party.
+ The use of the Assets is strictly limited to the Licensee and their authorized teams or clients for the purpose of integrating the Assets into a final project.
+
+Implication: A non-transferable license ensures that the Licensor maintains control over who uses the Assets and prevents unauthorized resale or distribution through third parties.
+ The user can incorporate the Assets into their work but cannot pass on the license rights to another entity or person.
+5. Limited Liability
+The Assets are provided "as-is," without warranty of any kind. The Licensor shall not be held responsible for any damages, claims, or liabilities that may arise from the use, misuse, or inability to use the Assets.
+ The Licensee agrees to use the Assets at their own risk.
+
+6. Governing Law
+This License shall be governed and construed in accordance with international copyright laws and the laws of the state of California, United States, favoring the rights of LUX ART STUDIOS as the Licensor.
+ Any disputes arising from this license will be subject to the exclusive jurisdiction of the courts of California, United States.
+
+7. Intellectual Property Rights
+All intellectual property rights over the Assets remain with LUX ART STUDIOS. The Licensee receives a limited, revocable right to use the Assets as outlined in this agreement.
+ Any unauthorized reproduction, redistribution, or violation of this license will result in legal action.
+
+8. Language
+This license is provided in English, and all communications regarding it must be conducted in English.
