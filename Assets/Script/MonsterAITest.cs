@@ -165,6 +165,16 @@ public class MonsterAITest : MonoBehaviour
         GoToNextPatrolPoint(); // Move to the next patrol point
     }
 
+    public void DeactivateMonster()
+    {
+        isActive = false; // Set the monster to inactive
+        agent.isStopped = true; // Stop any movement
+        state = MonsterStates.Idle; // Switch to the idle state
+        animator.SetBool("isMoving", false); // Ensure the moving animation is off
+        animator.SetBool("isIdle", true); // Trigger the idle animation
+        WatchPlayer(); // Optionally keep watching the player while inactive
+    }
+
     // Teleport the monster and handle idle behavior based on toggle
     public void TeleportMonster(Transform trans) => TeleportMonster(trans.position);
     public void TeleportMonster(Vector3 position)
