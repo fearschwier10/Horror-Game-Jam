@@ -41,6 +41,7 @@ public class MonsterAITest : MonoBehaviour
         gameOverUI.SetActive(false);
         agent.isStopped = true; // Initially stop the monster
         animator.SetBool("isMoving", false); // Ensure the moving animation is off initially
+        Debug.Log("Monster State: " + state);
     }
 
     void Update()
@@ -68,8 +69,9 @@ public class MonsterAITest : MonoBehaviour
             WatchPlayer(); // Watch the player while idling
             animator.SetBool("isMoving", false); // Set moving animation off
         }
-    }
 
+        Debug.Log("Monster State: " + state); // Log the current state each frame
+    }
 
     void Patrol()
     {
@@ -86,6 +88,7 @@ public class MonsterAITest : MonoBehaviour
 
         agent.destination = patrolPoints[currentPatrolIndex].position;
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+        Debug.Log("Moving to Patrol Point: " + currentPatrolIndex);
     }
 
     void CheckForPlayer()
@@ -95,6 +98,7 @@ public class MonsterAITest : MonoBehaviour
         {
             state = MonsterStates.Chasing;
             PlayChaseSound();  // Play chase sound
+            Debug.Log("Player detected! Switching to Chasing state.");
         }
     }
 
@@ -107,6 +111,7 @@ public class MonsterAITest : MonoBehaviour
         {
             state = MonsterStates.Patroling;
             GoToNextPatrolPoint();
+            Debug.Log("Player out of range! Switching to Patrolling state.");
         }
     }
 
@@ -145,6 +150,7 @@ public class MonsterAITest : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Debug.Log("Game Over!"); // Log Game Over
     }
 
     public void RestartGame()
@@ -163,6 +169,7 @@ public class MonsterAITest : MonoBehaviour
         agent.isStopped = false; // Allow movement
         state = MonsterStates.Patroling; // Start patrolling
         GoToNextPatrolPoint(); // Move to the next patrol point
+        Debug.Log("Monster Activated. State: " + state);
     }
 
     public void DeactivateMonster()
@@ -173,6 +180,7 @@ public class MonsterAITest : MonoBehaviour
         animator.SetBool("isMoving", false); // Ensure the moving animation is off
         animator.SetBool("isIdle", true); // Trigger the idle animation
         WatchPlayer(); // Optionally keep watching the player while inactive
+        Debug.Log("Monster Deactivated. State: " + state);
     }
 
     // Teleport the monster and handle idle behavior based on toggle
@@ -187,6 +195,7 @@ public class MonsterAITest : MonoBehaviour
             // If the toggle is enabled, switch to idle behavior
             state = MonsterStates.Idle;
             animator.SetBool("isIdle", true); // Play the idle animation
+            Debug.Log("Monster Teleported. State: " + state);
         }
         else
         {
@@ -194,6 +203,7 @@ public class MonsterAITest : MonoBehaviour
             agent.isStopped = false; // Allow movement again
             state = MonsterStates.Patroling; // Resume patrolling (or you can decide based on context)
             GoToNextPatrolPoint();
+            Debug.Log("Monster Teleported and is now Patrolling. State: " + state);
         }
     }
 
