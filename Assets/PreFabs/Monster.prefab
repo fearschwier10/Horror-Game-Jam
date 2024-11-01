@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.044617258
+      value: 0.07862007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.044617258
+      value: 0.07862007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.044617258
+      value: 0.07862007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.9495454
+      value: -64.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.81201
+      value: 11.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.w
@@ -146,11 +146,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  detectionRange: 10
+  detectionRange: 20
   player: {fileID: 0}
   gameOverUI: {fileID: 0}
   chaseSound: {fileID: 8300000, guid: d92c0bbebf02bf246b34b74679f8b744, type: 3}
   killSound: {fileID: 8300000, guid: 2f93061762318424db8bbfd75948edc1, type: 3}
+  animator: {fileID: 0}
+  shouldIdleOnTeleport: 0
   state: 0
 --- !u!95 &9038762919401137236
 Animator:
@@ -203,7 +205,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6282586255546842818}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
