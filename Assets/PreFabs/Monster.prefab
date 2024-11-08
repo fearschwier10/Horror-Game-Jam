@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.07862007
+      value: 0.038540345
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.07862007
+      value: 0.038540345
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.07862007
+      value: 0.038540345
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.45
+      value: -62.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.98
+      value: 3.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.100884505
+      value: 0.6215782
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.99489814
+      value: 0.78335214
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 191.58
+      value: 103.137
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -63,6 +63,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1444101310167026785, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1444101310167026785, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -1444101310167026785, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_Name
@@ -117,8 +129,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 6282586255546842818}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 1
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -126,7 +138,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -152,7 +164,7 @@ MonoBehaviour:
   chaseSound: {fileID: 8300000, guid: d92c0bbebf02bf246b34b74679f8b744, type: 3}
   killSound: {fileID: 8300000, guid: 2f93061762318424db8bbfd75948edc1, type: 3}
   animator: {fileID: 0}
-  shouldIdleOnTeleport: 0
+  shouldIdleOnTeleport: 1
   state: 0
 --- !u!95 &9038762919401137236
 Animator:

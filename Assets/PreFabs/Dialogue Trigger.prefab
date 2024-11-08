@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7476900901419799009}
   - component: {fileID: 5548022087748703116}
   - component: {fileID: 5708463458217114266}
-  - component: {fileID: 8671550382493888916}
+  - component: {fileID: 1962348278994110944}
   m_Layer: 0
   m_Name: Dialogue Trigger
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 111.68466, y: 4.11, z: -31.697468}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.1677, y: 1, z: 2.9794}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8671550382493888916
+--- !u!114 &1962348278994110944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,10 +115,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2516998680994565629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a61c88b1a9823d46b056cd7679c2025, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ba0cc356ce9c54449d92d7afa8acb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewText: {fileID: 4900000, guid: 410f23779faa37c41a37c2a2990f0950, type: 3}
+  NewText: {fileID: 4900000, guid: 87dca726e4246d4468637395edf3b470, type: 3}
   Repeat: 0
   HasTriggered: 0
-  LockPlayer: 0
+  LockPlayer: 1
