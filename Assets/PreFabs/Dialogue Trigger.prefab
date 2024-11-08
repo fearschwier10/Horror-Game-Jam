@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7476900901419799009}
   - component: {fileID: 5548022087748703116}
   - component: {fileID: 5708463458217114266}
-  - component: {fileID: 8671550382493888916}
+  - component: {fileID: 1962348278994110944}
   m_Layer: 0
   m_Name: Dialogue Trigger
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8671550382493888916
+--- !u!114 &1962348278994110944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

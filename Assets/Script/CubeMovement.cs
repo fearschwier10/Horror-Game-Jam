@@ -1,4 +1,6 @@
 using UnityEngine;
+
+using UnityEngine;
 using UnityEngine.UI;  // For UI components
 
 public class CubeMovement : MonoBehaviour
@@ -25,6 +27,7 @@ public class CubeMovement : MonoBehaviour
         sprintTimer = 0f;
         cooldownTimer = 0f;
 
+        // Set the initial max value of the slider to the sprint duration
         if (sprintSlider != null)
         {
             sprintSlider.maxValue = sprintDuration; // Set slider max to sprint duration
@@ -49,12 +52,13 @@ public class CubeMovement : MonoBehaviour
 
     void HandleSprint()
     {
+        // Start sprinting if Left Shift is pressed, not sprinting already, and cooldown is over
         if (Input.GetKey(KeyCode.LeftShift) && !isSprinting && cooldownTimer <= 0f)
         {
             StartSprint();
         }
 
-        // Check if sprint key is released while sprinting
+        // Stop sprinting if Left Shift is released while sprinting
         if (Input.GetKeyUp(KeyCode.LeftShift) && isSprinting)
         {
             StopSprint();
@@ -72,7 +76,7 @@ public class CubeMovement : MonoBehaviour
         else if (cooldownTimer > 0f)
         {
             cooldownTimer -= Time.deltaTime;
-            UpdateSprintUI(); // Update UI during cooldown as well
+            UpdateSprintUI(); // Update UI during cooldown
         }
     }
 
@@ -88,7 +92,12 @@ public class CubeMovement : MonoBehaviour
     {
         isSprinting = false;
         speed = walkSpeed;
-        cooldownTimer = sprintCooldown; // Start cooldown only if sprint duration is over
+
+        // Start cooldown only if sprintTimer has fully depleted
+        if (sprintTimer <= 0f)
+        {
+            cooldownTimer = sprintCooldown;
+        }
         UpdateSprintUI(); // Update UI on sprint stop
     }
 
@@ -96,8 +105,8 @@ public class CubeMovement : MonoBehaviour
     {
         if (sprintSlider != null)
         {
-            sprintSlider.value = isSprinting ? sprintTimer : Mathf.Max(0, sprintCooldown - cooldownTimer);
-            sprintSlider.maxValue = isSprinting ? sprintDuration : sprintCooldown;
+            // Update slider value to show remaining sprint time or cooldown time
+            sprintSlider.value = isSprinting ? sprintTimer : cooldownTimer;
         }
     }
 }

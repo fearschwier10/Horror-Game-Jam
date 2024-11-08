@@ -41,7 +41,7 @@ public class MonsterAITest : MonoBehaviour
         gameOverUI.SetActive(false);
         agent.isStopped = true; // Initially stop the monster
         animator.SetBool("isMoving", false); // Ensure the moving animation is off initially
-        Debug.Log("Monster State: " + state);
+        Debug.Log("Monster State at Start: " + state);
     }
 
     void Update()
@@ -50,68 +50,76 @@ public class MonsterAITest : MonoBehaviour
         {
             WatchPlayer(); // Watch the player while inactive
             animator.SetBool("isMoving", false); // Ensure idle animation is played
+            Debug.Log("Monster is inactive and watching player."); // Debug message for inactive state
             return; // Skip the rest of the Update logic
         }
 
+        Debug.Log("Monster Active. Current State: " + state); // Log monster state each frame if active
+
         if (state == MonsterStates.Chasing)
         {
+            Debug.Log("Monster is chasing the player."); // Debug message for chasing state
             ChasePlayer();
             animator.SetBool("isMoving", true); // Set moving animation on
         }
         else if (state == MonsterStates.Patroling)
         {
+            Debug.Log("Monster is patrolling."); // Debug message for patrolling state
             Patrol();
-            CheckForPlayer();
+            CheckForPlayer();  // Continue checking for the player while patrolling
             animator.SetBool("isMoving", true); // Set moving animation on
         }
         else if (state == MonsterStates.Idle)
         {
+            Debug.Log("Monster is idle and watching player."); // Debug message for idle state
             WatchPlayer(); // Watch the player while idling
             animator.SetBool("isMoving", false); // Set moving animation off
-        }
-
-        Debug.Log("Monster State: " + state); // Log the current state each frame
-    }
-
-    void Patrol()
-    {
-        if (agent.remainingDistance < 0.5f)
-        {
-            GoToNextPatrolPoint();
         }
     }
 
     void GoToNextPatrolPoint()
     {
-        if (patrolPoints.Length == 0)
-            return;
+        if (patrolPoints.Length == 0) return;
 
+        // Set the destination to the next patrol point
         agent.destination = patrolPoints[currentPatrolIndex].position;
+        Debug.Log("Moving to Patrol Point: " + currentPatrolIndex + " at Position: " + agent.destination); // Debug patrol point details
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-        Debug.Log("Moving to Patrol Point: " + currentPatrolIndex);
+    }
+
+    void Patrol()
+    {
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.1f)
+        {
+            Debug.Log("Arrived at Patrol Point: " + currentPatrolIndex); // Debug message for arrival at patrol point
+            GoToNextPatrolPoint();
+        }
     }
 
     void CheckForPlayer()
     {
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
+        Debug.Log("Distance to Player: " + distanceToPlayer); // Debug player distance
+
         if (distanceToPlayer < detectionRange)
         {
             state = MonsterStates.Chasing;
             PlayChaseSound();  // Play chase sound
-            Debug.Log("Player detected! Switching to Chasing state.");
+            Debug.Log("Player detected! Switching to Chasing state."); // Debug player detection
         }
     }
 
     void ChasePlayer()
     {
         agent.destination = player.position;
+        Debug.Log("Chasing player to position: " + player.position); // Debug target player position
 
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceToPlayer > detectionRange)
         {
-            state = MonsterStates.Patroling;
-            GoToNextPatrolPoint();
-            Debug.Log("Player out of range! Switching to Patrolling state.");
+            state = MonsterStates.Patroling;  // Switch back to patrolling if the player goes out of range
+            GoToNextPatrolPoint();  // Return to patrolling at the next patrol point
+            Debug.Log("Player out of range! Switching to Patrolling state."); // Debug player out of range
         }
     }
 
@@ -119,7 +127,7 @@ public class MonsterAITest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Monster hit the player!");
+            Debug.Log("Monster hit the player! Triggering Game Over."); // Debug player collision
             state = MonsterStates.KillPlayer;
             PlayKillSound();  // Play kill sound
             GameOver();
@@ -132,6 +140,7 @@ public class MonsterAITest : MonoBehaviour
         {
             audioSource.clip = chaseSound;
             audioSource.Play();
+            Debug.Log("Playing chase sound."); // Debug chase sound
         }
     }
 
@@ -141,6 +150,7 @@ public class MonsterAITest : MonoBehaviour
         {
             audioSource.clip = killSound;
             audioSource.Play();
+            Debug.Log("Playing kill sound."); // Debug kill sound
         }
     }
 
@@ -150,7 +160,7 @@ public class MonsterAITest : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Debug.Log("Game Over!"); // Log Game Over
+        Debug.Log("Game Over triggered."); // Debug Game Over
     }
 
     public void RestartGame()
@@ -178,9 +188,8 @@ public class MonsterAITest : MonoBehaviour
         agent.isStopped = true; // Stop any movement
         state = MonsterStates.Idle; // Switch to the idle state
         animator.SetBool("isMoving", false); // Ensure the moving animation is off
-        animator.SetBool("isIdle", true); // Trigger the idle animation
-        WatchPlayer(); // Optionally keep watching the player while inactive
         Debug.Log("Monster Deactivated. State: " + state);
+        WatchPlayer(); // Optionally keep watching the player while inactive
     }
 
     // Teleport the monster and handle idle behavior based on toggle
@@ -215,5 +224,6 @@ public class MonsterAITest : MonoBehaviour
         direction.y = 0; // Keep the rotation flat on the Y-axis
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2f);
+        Debug.Log("Monster is watching the player."); // Debug watching player
     }
 }
