@@ -4909,22 +4909,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5358050481544361785, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358050481544361785, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_Height
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358050481544361785, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358050481544361785, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5427744570417430205, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
       propertyPath: player
       value: 
@@ -4933,10 +4917,6 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 511631991}
-    - target: {fileID: 5427744570417430205, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: shouldIdleOnTeleport
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5427744570417430205, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -4952,18 +4932,6 @@ PrefabInstance:
     - target: {fileID: 6282586255546842818, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
       propertyPath: m_Name
       value: Monster
-      objectReference: {fileID: 0}
-    - target: {fileID: 6664177656406123640, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.038540345
-      objectReference: {fileID: 0}
-    - target: {fileID: 6664177656406123640, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.038540345
-      objectReference: {fileID: 0}
-    - target: {fileID: 6664177656406123640, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.038540345
       objectReference: {fileID: 0}
     - target: {fileID: 6664177656406123640, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5004,10 +4972,6 @@ PrefabInstance:
     - target: {fileID: 6664177656406123640, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038762919401137236, guid: b2788adf6bb268f4483a3248b384e6d4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8642,18 +8606,6 @@ PrefabInstance:
       propertyPath: sprintSlider
       value: 
       objectReference: {fileID: 120477182}
-    - target: {fileID: 5134623819936982605, guid: ffcd8442f23c97944ba28b9a6a1b6a91, type: 3}
-      propertyPath: sprintDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134623819936982605, guid: ffcd8442f23c97944ba28b9a6a1b6a91, type: 3}
-      propertyPath: sprintSpeedMultiplier
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5424002170255902882, guid: ffcd8442f23c97944ba28b9a6a1b6a91, type: 3}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
