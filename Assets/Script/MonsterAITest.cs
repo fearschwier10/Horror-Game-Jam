@@ -30,17 +30,18 @@ public class MonsterAITest : MonoBehaviour
     }
     public MonsterStates state;
 
-    void Start()
+    private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>(); // Initialize animator
+    }
+
+    void Start()
+    {
         currentPatrolIndex = 0;
-        state = MonsterStates.Patroling;
-        GoToNextPatrolPoint();
         gameOverUI.SetActive(false);
-        agent.isStopped = true; // Initially stop the monster
-        animator.SetBool("isMoving", false); // Ensure the moving animation is off initially
+        DeactivateMonster();
         Debug.Log("Monster State at Start: " + state);
     }
 
@@ -55,6 +56,7 @@ public class MonsterAITest : MonoBehaviour
         }
 
         Debug.Log("Monster Active. Current State: " + state); // Log monster state each frame if active
+        Debug.Log("Monster moving agent is stopped: " + agent.isStopped);
 
         if (state == MonsterStates.Chasing)
         {
@@ -82,19 +84,37 @@ public class MonsterAITest : MonoBehaviour
         if (patrolPoints.Length == 0) return;
 
         // Set the destination to the next patrol point
-        agent.destination = patrolPoints[currentPatrolIndex].position;
+        agent.SetDestination(patrolPoints[currentPatrolIndex].position);
+        agent.isStopped = false; // Allow movement again
         Debug.Log("Moving to Patrol Point: " + currentPatrolIndex + " at Position: " + agent.destination); // Debug patrol point details
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
     }
 
     void Patrol()
     {
+        // Check if the agent is actively calculating a path
+        if (agent.pathStatus == NavMeshPathStatus.PathComplete)
+        {
+            Debug.Log("Path is complete. Agent is on a valid path to the patrol point.");
+        }
+        else if (agent.pathStatus == NavMeshPathStatus.PathPartial)
+        {
+            Debug.LogWarning("Partial path detected. Agent may not reach the patrol point.");
+        }
+        else if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+        {
+            Debug.LogError("Invalid path! Agent cannot reach the patrol point.");
+            return; // Exit the function if the path is invalid
+        }
+
+        // Continue to check remaining distance and move to the next patrol point
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.1f)
         {
             Debug.Log("Arrived at Patrol Point: " + currentPatrolIndex); // Debug message for arrival at patrol point
             GoToNextPatrolPoint();
         }
     }
+
 
     void CheckForPlayer()
     {
@@ -111,7 +131,7 @@ public class MonsterAITest : MonoBehaviour
 
     void ChasePlayer()
     {
-        agent.destination = player.position;
+        agent.SetDestination(player.position);
         Debug.Log("Chasing player to position: " + player.position); // Debug target player position
 
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
@@ -197,19 +217,15 @@ public class MonsterAITest : MonoBehaviour
     public void TeleportMonster(Vector3 position)
     {
         transform.position = position;
-        agent.isStopped = true; // Stop the monster from moving
 
         if (shouldIdleOnTeleport)
         {
-            // If the toggle is enabled, switch to idle behavior
-            state = MonsterStates.Idle;
-            animator.SetBool("isIdle", true); // Play the idle animation
+            DeactivateMonster();
             Debug.Log("Monster Teleported. State: " + state);
         }
         else
         {
             // If the toggle is disabled, continue patrolling or chasing
-            agent.isStopped = false; // Allow movement again
             state = MonsterStates.Patroling; // Resume patrolling (or you can decide based on context)
             GoToNextPatrolPoint();
             Debug.Log("Monster Teleported and is now Patrolling. State: " + state);
