@@ -50,6 +50,8 @@ public class DialogueText : MonoBehaviour
         {
             LockPlayerMovement(); // Lock the player's movement
         }
+
+        Debug.Log("Triggered Dialogue " + newText.name);
     }
 
     IEnumerator TypeText()

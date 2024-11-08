@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7476900901419799009}
   - component: {fileID: 5548022087748703116}
   - component: {fileID: 5708463458217114266}
+  - component: {fileID: 5737992388114836319}
   m_Layer: 0
   m_Name: Dialogue Trigger
   m_TagString: Untagged
@@ -105,3 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5737992388114836319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516998680994565629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba0cc356ce9c54449d92d7afa8acb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewText: {fileID: 4900000, guid: 87dca726e4246d4468637395edf3b470, type: 3}
+  Repeat: 0
+  HasTriggered: 0
+  LockPlayer: 1
