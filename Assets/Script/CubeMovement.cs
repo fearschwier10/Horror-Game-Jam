@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;  // For UI components
+using UnityEngine.UI;
 
 public class CubeMovement : MonoBehaviour
 {
@@ -7,12 +7,15 @@ public class CubeMovement : MonoBehaviour
     public float sprintSpeedMultiplier = 2f;
     public float sprintDuration = 3f;
     public float sprintCooldown = 5f;
+    public float gravity = -9.81f;   // Gravity strength
+    public float groundCheckDistance = 0.2f; // Distance to check if on ground
 
     private CharacterController controller;
     private float speed;
     private bool isSprinting;
     private float sprintTimer;
     private float cooldownTimer;
+    private float verticalVelocity;  // Tracks downward speed for gravity
 
     // UI Element
     public Slider sprintSlider;  // Reference to the UI Slider
@@ -24,6 +27,7 @@ public class CubeMovement : MonoBehaviour
         isSprinting = false;
         sprintTimer = 0f;
         cooldownTimer = 0f;
+        verticalVelocity = 0f;
 
         if (sprintSlider != null)
         {
@@ -36,15 +40,26 @@ public class CubeMovement : MonoBehaviour
     {
         HandleSprint();
 
+        // Handle horizontal movement
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        // Apply gravity if not grounded
+        if (controller.isGrounded)
         {
-            Vector3 move = transform.right * horizontal + transform.forward * vertical;
-            controller.Move(move * speed * Time.deltaTime);
+            verticalVelocity = 0f; // Reset vertical velocity if grounded
         }
+        else
+        {
+            verticalVelocity += gravity * Time.deltaTime;
+        }
+
+        // Final movement calculation
+        Vector3 move = (transform.right * horizontal + transform.forward * vertical) * speed;
+        move.y = verticalVelocity; // Apply gravity to the movement vector
+
+        controller.Move(move * Time.deltaTime);
     }
 
     void HandleSprint()
@@ -54,7 +69,6 @@ public class CubeMovement : MonoBehaviour
             StartSprint();
         }
 
-        // Check if sprint key is released while sprinting
         if (Input.GetKeyUp(KeyCode.LeftShift) && isSprinting)
         {
             StopSprint();
@@ -72,7 +86,7 @@ public class CubeMovement : MonoBehaviour
         else if (cooldownTimer > 0f)
         {
             cooldownTimer -= Time.deltaTime;
-            UpdateSprintUI(); // Update UI during cooldown as well
+            UpdateSprintUI();
         }
     }
 
@@ -81,15 +95,15 @@ public class CubeMovement : MonoBehaviour
         isSprinting = true;
         speed = walkSpeed * sprintSpeedMultiplier;
         sprintTimer = sprintDuration;
-        UpdateSprintUI(); // Update UI on sprint start
+        UpdateSprintUI();
     }
 
     void StopSprint()
     {
         isSprinting = false;
         speed = walkSpeed;
-        cooldownTimer = sprintCooldown; // Start cooldown only if sprint duration is over
-        UpdateSprintUI(); // Update UI on sprint stop
+        cooldownTimer = sprintCooldown;
+        UpdateSprintUI();
     }
 
     void UpdateSprintUI()
