@@ -1,13 +1,27 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class MonsterAITest : MonoBehaviour
+
 {
+    // Post-Processing effects for Game Over
+    public PostProcessVolume postProcessVolume;  // Reference to the PostProcessVolume
+    private Vignette vignette;                   // Vignette effect
+    private ChromaticAberration chromaticAberration; // Chromatic Aberration effect
+    private Grain grain;
+
     public Transform[] patrolPoints;
     public float detectionRange = 10f;
     public Transform player;
     public GameObject gameOverUI;
+    public Transform mouthPosition;  // The target position inside the monster's mouth
+    public Camera mainCamera;        // Reference to the main camera
+    public float cameraMoveSpeed = 2f; // Speed at which the camera moves to the monster's mouth
+
 
     // Audio Clips
     public AudioClip chaseSound;  // Sound when chasing
@@ -43,6 +57,14 @@ public class MonsterAITest : MonoBehaviour
         gameOverUI.SetActive(false);
         DeactivateMonster();
         Debug.Log("Monster State at Start: " + state);
+
+        // Initialize post-processing effects
+        if (postProcessVolume.profile != null)
+        {
+            postProcessVolume.profile.TryGetSettings(out vignette);
+            postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+            postProcessVolume.profile.TryGetSettings(out grain);
+        }
     }
 
     void Update()
@@ -176,12 +198,82 @@ public class MonsterAITest : MonoBehaviour
 
     void GameOver()
     {
-        gameOverUI.SetActive(true);
-        Time.timeScale = 0f;
+        Debug.Log("Game Over triggered."); // Debug Game Over
+        StartCoroutine(MoveCameraToMouth());
+
+        // Start applying post-processing effects for Game Over
+        if (vignette != null)
+        {
+            vignette.intensity.value = 1.0f;  // Example intensity for vignette effect
+        }
+
+        if (chromaticAberration != null)
+        {
+            chromaticAberration.intensity.value = 3.0f;  // Example intensity for chromatic aberration
+        }
+
+        if (grain != null)
+        {
+            grain.intensity.value = 6.0f;  // Example intensity for grain effect
+        }
+    }
+
+    IEnumerator MoveCameraToMouth()
+    {
+        Debug.Log("Starting camera movement to mouth."); // Debug camera movement
+        agent.isStopped = true; // Stop the monster's movement
+        animator.SetBool("isMoving", false); // Stop monster animations
+
+        // Store the original camera position and rotation
+        Vector3 originalPosition = mainCamera.transform.position;
+        Quaternion originalRotation = mainCamera.transform.rotation;
+
+        // Define how much the camera will move backward before zooming in
+        float backwardDistance = 5f;
+        float zoomInDistance = 2f; // Distance the camera will move to zoom in
+        float zoomTime = 0.5f; // Time for the zoom effect
+
+        // Calculate the target position for zooming out (moving backward)
+        Vector3 targetPosition = originalPosition - mainCamera.transform.forward * backwardDistance;
+
+        float elapsedTime = 0f;
+
+        // Move the camera backward to simulate zoom-out
+        while (elapsedTime < zoomTime)
+        {
+            mainCamera.transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / zoomTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Now move the camera smoothly to the monster's mouth
+        elapsedTime = 0f;
+        Vector3 mouthPosition = this.mouthPosition.position;
+
+        // Move towards the monster's mouth (zoom in effect)
+        while (elapsedTime < zoomTime)
+        {
+            mainCamera.transform.position = Vector3.Lerp(targetPosition, mouthPosition, elapsedTime / zoomTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the camera is exactly at the mouth position
+        mainCamera.transform.position = mouthPosition;
+
+        Debug.Log("Camera movement complete. Showing Game Over UI."); // Debug completion
+        ShowGameOverUI(); // Show the Game Over screen
+    }
+
+
+    void ShowGameOverUI()
+    {
+        gameOverUI.SetActive(true); // Activate the Game Over screen
+        Time.timeScale = 0f;        // Freeze game time
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Debug.Log("Game Over triggered."); // Debug Game Over
     }
+
 
     public void RestartGame()
     {
