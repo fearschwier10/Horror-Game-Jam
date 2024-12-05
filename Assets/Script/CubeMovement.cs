@@ -20,6 +20,10 @@ public class CubeMovement : MonoBehaviour
     // UI Element
     public Slider sprintSlider;  // Reference to the UI Slider
 
+    // Audio settings
+    private AudioSource audioSource;  // Reference to the AudioSource component
+    public AudioClip walkingClip;    // The walking sound clip
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -28,6 +32,8 @@ public class CubeMovement : MonoBehaviour
         sprintTimer = 0f;
         cooldownTimer = 0f;
         verticalVelocity = 0f;
+
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
 
         if (sprintSlider != null)
         {
@@ -60,6 +66,16 @@ public class CubeMovement : MonoBehaviour
         move.y = verticalVelocity; // Apply gravity to the movement vector
 
         controller.Move(move * Time.deltaTime);
+
+        // Play walking audio if moving
+        if (move.magnitude > 0.1f) // Check if the character is moving
+        {
+            PlayWalkingAudio();
+        }
+        else
+        {
+            StopWalkingAudio();
+        }
     }
 
     void HandleSprint()
@@ -112,6 +128,26 @@ public class CubeMovement : MonoBehaviour
         {
             sprintSlider.value = isSprinting ? sprintTimer : Mathf.Max(0, sprintCooldown - cooldownTimer);
             sprintSlider.maxValue = isSprinting ? sprintDuration : sprintCooldown;
+        }
+    }
+
+    // Method to play walking audio
+    void PlayWalkingAudio()
+    {
+        if (!audioSource.isPlaying && walkingClip != null) // Check if audio is not already playing
+        {
+            audioSource.clip = walkingClip;
+            audioSource.loop = true; // Loop the walking audio
+            audioSource.Play();
+        }
+    }
+
+    // Method to stop walking audio
+    void StopWalkingAudio()
+    {
+        if (audioSource.isPlaying) // Check if audio is currently playing
+        {
+            audioSource.Stop();
         }
     }
 }
