@@ -8,6 +8,11 @@ using UnityEngine.Rendering.PostProcessing;
 public class MonsterAITest : MonoBehaviour
 
 {
+    // Add at the top of the script
+    public float defaultSpeed = 3.5f;  // Monster's default speed
+    public float chaseSpeed = 6f;      // Monster's increased speed for chasing
+    public MonoBehaviour dialogueTrigger; // Drag your specific dialogue trigger here
+
     // Post-Processing effects for Game Over
     public PostProcessVolume postProcessVolume;  // Reference to the PostProcessVolume
     private Vignette vignette;                   // Vignette effect
@@ -323,7 +328,17 @@ public class MonsterAITest : MonoBehaviour
             Debug.Log("Monster Teleported and is now Patrolling. State: " + state);
         }
     }
+    public void ForceChasePlayer()
+    {
+        state = MonsterStates.Chasing;  // Set the monster's state to chasing
 
+        agent.isStopped = true;  // Stop the monster from patrolling
+        agent.speed *= 2;  // Double the speed for chasing
+        agent.SetDestination(player.position);  // Set the destination to the player's position
+
+        PlayChaseSound();  // Play the chase sound (optional)
+        Debug.Log("Monster forced to chase the player with doubled speed.");  // Debug message
+    }
     // Monster watches the player while idling
     void WatchPlayer()
     {

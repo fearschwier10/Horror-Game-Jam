@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2342799578146779118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2852605405763206887}
+  m_Layer: 0
+  m_Name: MouthPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2852605405763206887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342799578146779118}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0000081476755, y: -0.9991622, z: -0.00019888242, w: -0.040926874}
+  m_LocalPosition: {x: -3.3, y: 47.8, z: 31.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6664177656406123640}
+  m_LocalEulerAnglesHint: {x: -0.023, y: -184.691, z: 0.002}
 --- !u!1 &7614456539041788289
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,43 +84,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -98.76
+      value: -87.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.36
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.51
+      value: 20.71
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.781802
+      value: 0.21482058
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000994451
+      value: -0.003231442
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6235138
+      value: 0.9766453
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0039053406
+      value: 0.0024079883
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.368
+      value: -0.349
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 77.146
+      value: 155.191
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.279
+      value: -0.302
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -157,6 +188,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       insertIndex: -1
       addedObject: {fileID: 500024911423885972}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2852605405763206887}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4836b655a545bd74c8489e121e5aeb95, type: 3}
       insertIndex: -1
@@ -216,15 +250,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3f82707fbab36488563b80d5baa98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSpeed: 3.5
+  chaseSpeed: 6
+  dialogueTrigger: {fileID: 0}
   postProcessVolume: {fileID: 0}
   patrolPoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   detectionRange: 20
   player: {fileID: 0}
   gameOverUI: {fileID: 0}
-  mouthPosition: {fileID: 500024911423885972}
+  mouthPosition: {fileID: 2852605405763206887}
   mainCamera: {fileID: 0}
   cameraMoveSpeed: 0.5
   chaseSound: {fileID: 8300000, guid: d92c0bbebf02bf246b34b74679f8b744, type: 3}
