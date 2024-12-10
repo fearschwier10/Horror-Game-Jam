@@ -150,4 +150,12 @@ public class CubeMovement : MonoBehaviour
             audioSource.Stop();
         }
     }
+
+    public void SetDialogueState(bool inDialogue)
+    {
+        if (inDialogue)
+        {
+            StopWalkingAudio(); // Stop the walking sound when entering dialogue
+        }
+    }
 }

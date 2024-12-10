@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerDialogue : MonoBehaviour
@@ -6,19 +7,19 @@ public class TriggerDialogue : MonoBehaviour
     public TextAsset NewText;
     private DialogueText DialogueSystem;
     [SerializeField]
-    [Tooltip("Tells if Dialogue has repeated before")]
     private bool Repeat;
     [SerializeField]
-    [Tooltip("Tells if Dialogue has triggered before")]
     private bool HasTriggered;
     [SerializeField]
-    [Tooltip("Tells if Player has been locked")]
     private bool LockPlayer;
+    public bool isEvidenceTrigger = true;  // Default is true, but can be toggled off for non-evidence triggers
 
     public Transform FocusObject; // Object the camera should look at
     public float CameraMoveDuration = 2f; // Time taken for the camera to focus and return
 
-    private Transform playerTransform; // Reference to the player's transform
+    public Evidence evidence; // Reference to the evidence associated with this trigger
+
+    private Transform playerTransform;
     private Camera mainCamera;
     private Vector3 originalCameraPosition;
     private Quaternion originalCameraRotation;
@@ -26,24 +27,24 @@ public class TriggerDialogue : MonoBehaviour
     private Renderer triggerRenderer;
 
     [SerializeField]
-    [Tooltip("Disable player movement during camera focus")]
-    private bool disableMovementDuringFocus = true; // Flag to control movement restrictions
+    private bool disableMovementDuringFocus = true;
 
-    private bool isMovementDisabled; // Tracks current movement state
+    private bool isMovementDisabled;
+    private FirstPersonScript firstPersonScript;
+
+    public List<EvidenceGlow> targetEvidenceGlows = new List<EvidenceGlow>();
 
     private void Awake()
     {
         DialogueSystem = FindObjectOfType<DialogueText>();
-        mainCamera = Camera.main; // Cache the main camera
-        playerTransform = mainCamera.transform.parent; // Assuming the camera is a child of the player
+        mainCamera = Camera.main;
+        playerTransform = mainCamera.transform.parent;
+        firstPersonScript = playerTransform.GetComponentInChildren<FirstPersonScript>();
     }
 
     void Start()
     {
-        // Get the Renderer component of this GameObject
         triggerRenderer = GetComponent<Renderer>();
-
-        // If a Renderer is attached, hide it during play
         if (triggerRenderer != null)
         {
             triggerRenderer.enabled = false;
@@ -54,22 +55,23 @@ public class TriggerDialogue : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !DialogueSystem.IsActive)
         {
-            if (Repeat)
+            if (!HasTriggered)
             {
                 StartCoroutine(FocusOnObjectAndTriggerDialogue());
-            }
-            else
-            {
-                if (!HasTriggered)
+
+                if (isEvidenceTrigger && evidence != null)
                 {
-                    StartCoroutine(FocusOnObjectAndTriggerDialogue());
-                    HasTriggered = true;
+                    // Only collect evidence if this trigger is set to be an evidence trigger
+                    EvidenceTracker.Instance.CollectEvidence(evidence);
                 }
+
+                HasTriggered = true;
             }
         }
     }
 
-    private IEnumerator FocusOnObjectAndTriggerDialogue()
+    private IEnumerator FocusOnObjectAndTriggerDialogue() // This is correct
+
     {
         if (FocusObject == null)
         {
@@ -78,14 +80,33 @@ public class TriggerDialogue : MonoBehaviour
             yield break;
         }
 
-        // Disable player movement
-        isMovementDisabled = true;
+        DialogueSystem.SetText(NewText, LockPlayer);
 
-        // Save the camera's original position and rotation
+        yield return null;
+
+        if (targetEvidenceGlows.Count > 0)
+        {
+            foreach (EvidenceGlow glow in targetEvidenceGlows)
+            {
+                if (glow != null)
+                {
+                    glow.StopGlow();
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No targetEvidenceGlows assigned!");
+        }
+
+        playerTransform.GetComponent<CubeMovement>()?.SetDialogueState(true);
+        isMovementDisabled = true;
+        if (firstPersonScript != null)
+            firstPersonScript.enabled = false;
+
         originalCameraPosition = mainCamera.transform.localPosition;
         originalCameraRotation = mainCamera.transform.localRotation;
 
-        // Move and rotate the camera to look at the focus object
         float elapsedTime = 0f;
         while (elapsedTime < CameraMoveDuration / 2)
         {
@@ -95,13 +116,10 @@ public class TriggerDialogue : MonoBehaviour
             yield return null;
         }
 
-        // Trigger dialogue
-        DialogueSystem.SetText(NewText, LockPlayer);
-
-        // Wait until the dialogue system is no longer active
         yield return new WaitUntil(() => !DialogueSystem.IsActive);
 
-        // Return the camera to its original position and rotation
+        playerTransform.GetComponent<CubeMovement>()?.SetDialogueState(false);
+
         elapsedTime = 0f;
         while (elapsedTime < CameraMoveDuration / 2)
         {
@@ -111,21 +129,18 @@ public class TriggerDialogue : MonoBehaviour
             yield return null;
         }
 
-        // Re-enable player movement
         isMovementDisabled = false;
+        if (firstPersonScript != null)
+            firstPersonScript.enabled = true;
 
-        // Sync camera rotation with player's rotation to avoid misalignment
-        mainCamera.transform.localRotation = Quaternion.identity; // Reset to match player's rotation
+        mainCamera.transform.localRotation = Quaternion.identity;
     }
 
     void Update()
     {
         if (isMovementDisabled)
         {
-            // Skip all input processing to prevent side-to-side movement
             return;
         }
-
-        // Handle other player interactions or actions here if necessary
     }
 }

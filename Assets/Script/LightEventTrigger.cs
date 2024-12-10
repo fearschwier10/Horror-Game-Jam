@@ -13,6 +13,7 @@ public class LightEventTrigger : MonoBehaviour
     public AudioClip flickerAudio; // Audio clip to play while lights are flickering
 
     private AudioSource audioSource; // AudioSource for playing the audio
+    private bool hasTriggered = false; // Flag to prevent multiple triggers
 
     private void Awake()
     {
@@ -26,9 +27,11 @@ public class LightEventTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // If the object entering the trigger zone has the tag "Player"
-        if (other.gameObject.CompareTag(tag))
+        // If the object entering the trigger zone has the tag "Player" and has not triggered before
+        if (!hasTriggered && other.gameObject.CompareTag(tag))
         {
+            hasTriggered = true; // Set the flag to prevent retriggering
+
             // Trigger the event that starts the flickering light behavior
             TriggerEvent.Invoke();
 
