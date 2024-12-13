@@ -23,6 +23,9 @@ public class EvidenceTracker : MonoBehaviour
     [Header("Fade Settings")]
     public float fadeDelay = 2.5f; // Time to wait before starting the fade (can be edited in the Inspector)
 
+    [Header("Collider Activator Settings")]
+    public EvidenceColliderActivator colliderActivator; // Reference to the EvidenceColliderActivator
+
     private void Awake()
     {
         if (Instance == null)
@@ -49,6 +52,12 @@ public class EvidenceTracker : MonoBehaviour
         {
             collectedEvidence.Add(evidence);
             UpdateEvidenceUI(evidence);
+
+            // Call the method to check if the collider should be activated
+            if (colliderActivator != null)
+            {
+                colliderActivator.CheckEvidenceCount(collectedEvidence.Count);
+            }
         }
     }
 
@@ -80,6 +89,7 @@ public class EvidenceTracker : MonoBehaviour
             evidenceTrackerPanel.SetActive(false); // Hide the UI when you want
         }
     }
+
     private IEnumerator HideEvidenceUI()
     {
         // Wait for the fadeDelay time before starting the fade
@@ -159,4 +169,3 @@ public class EvidenceTracker : MonoBehaviour
         return collectedEvidence.Count;
     }
 }
-

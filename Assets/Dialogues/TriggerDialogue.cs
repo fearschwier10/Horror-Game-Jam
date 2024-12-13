@@ -13,6 +13,7 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField]
     private bool LockPlayer;
     public bool isEvidenceTrigger = true;  // Default is true, but can be toggled off for non-evidence triggers
+    public bool RequireSixEvidence = false;  // Add this boolean to check if the player needs 6 pieces of evidence
 
     public Transform FocusObject; // Object the camera should look at
     public float CameraMoveDuration = 2f; // Time taken for the camera to focus and return
@@ -57,6 +58,14 @@ public class TriggerDialogue : MonoBehaviour
         {
             if (!HasTriggered)
             {
+                // Check if the evidence requirement is enabled and whether the player has 6 evidences
+                if (RequireSixEvidence && EvidenceTracker.Instance.GetCollectedEvidenceCount() < 6)
+                {
+                    // If 6 evidences haven't been collected, exit
+                    Debug.Log("You need 6 pieces of evidence to trigger this dialogue.");
+                    return;
+                }
+
                 Debug.Log("Evidence Triggered!");  // Debug log to confirm trigger hit
                 StartCoroutine(FocusOnObjectAndTriggerDialogue());
 
@@ -71,7 +80,7 @@ public class TriggerDialogue : MonoBehaviour
         }
     }
 
-    private IEnumerator FocusOnObjectAndTriggerDialogue() // This is correct
+    private IEnumerator FocusOnObjectAndTriggerDialogue()
     {
         if (FocusObject == null)
         {

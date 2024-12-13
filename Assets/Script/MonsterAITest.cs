@@ -8,6 +8,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class MonsterAITest : MonoBehaviour
 
 {
+    public bool mainMonster = false; // Boolean to check if this is the main monster
     // Add at the top of the script
     public float defaultSpeed = 3.5f;  // Monster's default speed
     public float chaseSpeed = 6f;      // Monster's increased speed for chasing
@@ -74,6 +75,12 @@ public class MonsterAITest : MonoBehaviour
 
     void Update()
     {
+        if (!mainMonster) // Check if this is the main monster
+        {
+            animator.SetBool("isMoving", false); // Ensure it stays idle
+            return; // Skip the rest of the Update logic for non-main monsters
+        }
+
         if (!isActive) // Check if the monster is not active
         {
             WatchPlayer(); // Watch the player while inactive
@@ -298,6 +305,8 @@ public class MonsterAITest : MonoBehaviour
     // Method to activate the monster
     public void ActivateMonster()
     {
+        if (!mainMonster) return; // Only activate if this is the main monster
+
         isActive = true; // Set the monster to active
         agent.isStopped = false; // Allow movement
         state = MonsterStates.Patroling; // Start patrolling
@@ -307,6 +316,8 @@ public class MonsterAITest : MonoBehaviour
 
     public void DeactivateMonster()
     {
+        if (!mainMonster) return; // Only deactivate if this is the main monster
+
         isActive = false; // Set the monster to inactive
         agent.isStopped = true; // Stop any movement
         state = MonsterStates.Idle; // Switch to the idle state
@@ -317,21 +328,38 @@ public class MonsterAITest : MonoBehaviour
 
     // Teleport the monster and handle idle behavior based on toggle
     public void TeleportMonster(Transform trans) => TeleportMonster(trans.position);
+
     public void TeleportMonster(Vector3 position)
     {
-        transform.position = position;
+        if (!mainMonster) return; // Only teleport if this is the main monster
 
-        if (shouldIdleOnTeleport)
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+        // Find the nearest valid position on the NavMesh
+        if (NavMesh.SamplePosition(position, out NavMeshHit hit, 2.0f, NavMesh.AllAreas))
         {
-            DeactivateMonster();
-            Debug.Log("Monster Teleported. State: " + state);
+            // Move the monster to the valid NavMesh position
+            transform.position = hit.position;
+            agent.Warp(hit.position);
+
+            // Handle idle or patrolling state based on the flag
+            if (shouldIdleOnTeleport)
+            {
+                DeactivateMonster();
+                Debug.Log("Monster Teleported. State: " + state);
+            }
+            else
+            {
+                // If the toggle is disabled, resume patrolling or chasing
+                state = MonsterStates.Patroling; // Adjust to your specific state
+                GoToNextPatrolPoint();
+                Debug.Log("Monster Teleported and is now Patrolling. State: " + state);
+            }
         }
         else
         {
-            // If the toggle is disabled, continue patrolling or chasing
-            state = MonsterStates.Patroling; // Resume patrolling (or you can decide based on context)
-            GoToNextPatrolPoint();
-            Debug.Log("Monster Teleported and is now Patrolling. State: " + state);
+            // If no valid position is found, log a warning
+            Debug.LogWarning("Teleport destination is not on the NavMesh.");
         }
     }
     public void ForceChasePlayer()
