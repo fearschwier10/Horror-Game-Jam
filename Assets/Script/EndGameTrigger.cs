@@ -14,7 +14,7 @@ public class EndGameTrigger : MonoBehaviour
         // Ensure the endGamePanel is disabled at the start
         if (endGamePanel != null)
         {
-            endGamePanel.SetActive(false); 
+            endGamePanel.SetActive(false);
         }
 
         // Ensure the AudioSource component is attached
