@@ -7,6 +7,11 @@ public class EvidenceTracker : MonoBehaviour
 {
     public static EvidenceTracker Instance;
 
+    [Header("End Game Trigger Settings")]
+    public GameObject endGameTrigger; // Reference to the end game trigger in the scene
+    public GameObject endGameScreen; // Reference to the end game screen UI
+    public AudioClip endGameSound; // Sound to play when the end game is triggered
+
     [Header("UI Elements")]
     public GameObject evidenceTrackerPanel; // Reference to the entire evidence tracker panel
     public TextMeshProUGUI evidenceCountText; // Text to display "Evidence Collected: 1/6"
@@ -23,9 +28,6 @@ public class EvidenceTracker : MonoBehaviour
     [Header("Fade Settings")]
     public float fadeDelay = 2.5f; // Time to wait before starting the fade (can be edited in the Inspector)
 
-    [Header("Collider Activator Settings")]
-    public EvidenceColliderActivator colliderActivator; // Reference to the EvidenceColliderActivator
-
     private void Awake()
     {
         if (Instance == null)
@@ -33,16 +35,11 @@ public class EvidenceTracker : MonoBehaviour
         else
             Destroy(gameObject);
 
-        // Hide the evidence display initially
+        // Hide the evidence display and end game trigger initially
         evidenceDisplayPanel.SetActive(false);
-    }
-
-    private void Update()
-    {
-        // Check for 'R' key press to show evidence count
-        if (Input.GetKeyDown(KeyCode.R))
+        if (endGameTrigger != null)
         {
-            ShowEvidenceCount();
+            endGameTrigger.SetActive(false);
         }
     }
 
@@ -53,17 +50,35 @@ public class EvidenceTracker : MonoBehaviour
             collectedEvidence.Add(evidence);
             UpdateEvidenceUI(evidence);
 
-            // Call the method to check if the collider should be activated
-            if (colliderActivator != null)
+            // Check if all evidence is collected
+            if (collectedEvidence.Count == evidenceList.Count)
             {
-                colliderActivator.CheckEvidenceCount(collectedEvidence.Count);
+                ActivateEndGameTrigger(); // Enable the end game trigger
             }
+        }
+    }
+
+    private void ActivateEndGameTrigger()
+    {
+        if (endGameTrigger != null)
+        {
+            endGameTrigger.SetActive(true);
+
+            // Optionally play a sound for the end game
+            if (endGameSound != null)
+            {
+                audioSource.PlayOneShot(endGameSound);
+            }
+        }
+        else
+        {
+            Debug.LogError("EndGameTrigger is not assigned in EvidenceTracker!");
         }
     }
 
     private void UpdateEvidenceUI(Evidence evidence)
     {
-        // Display the evidence collected count in the format: "Evidence Collected: 1/6"
+        // Display the evidence collected count in the format: "Evidence Collected: 1/6 sjdbasjdasd"
         evidenceCountText.text = $"Evidence Collected: {collectedEvidence.Count}/{evidenceList.Count}";
 
         // Show the UI panel
@@ -82,15 +97,7 @@ public class EvidenceTracker : MonoBehaviour
         StartCoroutine(HideEvidenceUI());
     }
 
-    public void HideEvidenceTracker()
-    {
-        if (evidenceTrackerPanel != null)
-        {
-            evidenceTrackerPanel.SetActive(false); // Hide the UI when you want
-        }
-    }
-
-    private IEnumerator HideEvidenceUI()
+    public IEnumerator HideEvidenceUI()
     {
         // Wait for the fadeDelay time before starting the fade
         yield return new WaitForSeconds(fadeDelay);
@@ -122,49 +129,7 @@ public class EvidenceTracker : MonoBehaviour
         }
     }
 
-    public void ShowEvidenceCount()
-    {
-        // Display the collected evidence count on the UI
-        evidenceDisplayText.text = $"Collected Evidence: {collectedEvidence.Count}/{evidenceList.Count}";
-        evidenceDisplayPanel.SetActive(true);
-
-        // Start the fade-out process after showing the evidence count
-        StartCoroutine(FadeOutEvidenceDisplay());
-    }
-
-    private IEnumerator FadeOutEvidenceDisplay()
-    {
-        // Wait for the fadeDelay time before starting the fade
-        yield return new WaitForSeconds(fadeDelay);
-
-        // Fade out the UI panel gradually
-        if (evidenceDisplayPanel != null)
-        {
-            float elapsedTime = 0f;
-            CanvasGroup canvasGroup = evidenceDisplayPanel.GetComponent<CanvasGroup>();
-
-            if (canvasGroup == null)
-            {
-                canvasGroup = evidenceDisplayPanel.AddComponent<CanvasGroup>();
-            }
-
-            // Ensure the panel starts fully visible (alpha = 1)
-            canvasGroup.alpha = 1f;
-
-            // Fade the panel out over 1.5 seconds (or your desired fade duration)
-            while (elapsedTime < 1.5f)
-            {
-                elapsedTime += Time.deltaTime;
-                canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / 1.5f);
-                yield return null;
-            }
-
-            // Once the fade is complete, deactivate the evidence display panel
-            evidenceDisplayPanel.SetActive(false);
-        }
-    }
-
-    public int GetCollectedEvidenceCount()
+     public int GetCollectedEvidenceCount()
     {
         return collectedEvidence.Count;
     }

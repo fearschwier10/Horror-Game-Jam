@@ -18,7 +18,7 @@ public class BlockingObject : MonoBehaviour
         if (evidenceTracker != null && evidenceTracker.GetCollectedEvidenceCount() >= 5)
         {
             // Disable the blocking object when the player collects 5/6 pieces of evidence
-            Destroy(gameObject); // This will make the blocking object disappear
+            Destroy(gameObject); // This will make the blocking object disappears
         }
     }
 }

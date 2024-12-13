@@ -4,12 +4,10 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
 
-
 public class MonsterAITest : MonoBehaviour
-
 {
+    public EvidenceTracker evidenceTracker; // Reference to the EvidenceTracker
     public bool mainMonster = false; // Boolean to check if this is the main monster
-    // Add at the top of the script
     public float defaultSpeed = 3.5f;  // Monster's default speed
     public float chaseSpeed = 6f;      // Monster's increased speed for chasing
     public MonoBehaviour dialogueTrigger; // Drag your specific dialogue trigger here
@@ -20,46 +18,46 @@ public class MonsterAITest : MonoBehaviour
     private ChromaticAberration chromaticAberration; // Chromatic Aberration effect
     private Grain grain;
 
-    public Transform[] patrolPoints;
-    public float detectionRange = 10f;
-    public Transform player;
+    public Transform player;  // Reference to the player
     public GameObject gameOverUI;
     public Transform mouthPosition;  // The target position inside the monster's mouth
     public Camera mainCamera;        // Reference to the main camera
     public float cameraMoveSpeed = 2f; // Speed at which the camera moves to the monster's mouth
 
-
     // Audio Clips
     public AudioClip chaseSound;  // Sound when chasing
     public AudioClip killSound;   // Sound when killing the player
-    private AudioSource audioSource;  // Reference to the AudioSource component
+    public AudioClip roarSound;   // Sound for roaring
+    private AudioSource chaseAudioSource;  // Audio source for chase sound
+    private AudioSource roarAudioSource;   // Audio source for roar sound
+    private AudioSource killAudioSource;   // Audio source for kill sound
 
     private NavMeshAgent agent;
-    private int currentPatrolIndex;
     public Animator animator; // Reference to the Animator component
 
-    public bool shouldIdleOnTeleport = false; // Toggle to control idle behavior after teleport
     private bool isActive = false; // Flag to control monster's activity
+    private bool hasRoared = false; // Flag to track if the monster has already roared
 
     public enum MonsterStates
     {
-        Patroling = 0,
         Chasing = 1,
         KillPlayer = 2,
         Idle = 3, // Idle state
     }
+
     public MonsterStates state;
 
-    private void Awake()
+    public void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
+        chaseAudioSource = gameObject.AddComponent<AudioSource>();
+        roarAudioSource = gameObject.AddComponent<AudioSource>();
+        killAudioSource = gameObject.AddComponent<AudioSource>();
         animator = GetComponent<Animator>(); // Initialize animator
     }
 
     void Start()
     {
-        currentPatrolIndex = 0;
         gameOverUI.SetActive(false);
         DeactivateMonster();
         Debug.Log("Monster State at Start: " + state);
@@ -75,106 +73,73 @@ public class MonsterAITest : MonoBehaviour
 
     void Update()
     {
-        if (!mainMonster) // Check if this is the main monster
-        {
-            animator.SetBool("isMoving", false); // Ensure it stays idle
-            return; // Skip the rest of the Update logic for non-main monsters
-        }
-
         if (!isActive) // Check if the monster is not active
         {
-            WatchPlayer(); // Watch the player while inactive
             animator.SetBool("isMoving", false); // Ensure idle animation is played
-            Debug.Log("Monster is inactive and watching player."); // Debug message for inactive state
+            WatchPlayer(); // Ensure it watches the player when idle
             return; // Skip the rest of the Update logic
         }
 
+        if (!mainMonster) // Check if this is not the main monster
+        {
+            animator.SetBool("isMoving", false); // Ensure it stays idle
+            WatchPlayer(); // Make sure non-main monsters still watch the player
+            return; // Skip the rest of the Update logic for non-main monsters
+        }
+
         Debug.Log("Monster Active. Current State: " + state); // Log monster state each frame if active
-        Debug.Log("Monster moving agent is stopped: " + agent.isStopped);
 
         if (state == MonsterStates.Chasing)
         {
-            Debug.Log("Monster is chasing the player."); // Debug message for chasing state
             ChasePlayer();
-            animator.SetBool("isMoving", true); // Set moving animation on
-        }
-        else if (state == MonsterStates.Patroling)
-        {
-            Debug.Log("Monster is patrolling."); // Debug message for patrolling state
-            Patrol();
-            CheckForPlayer();  // Continue checking for the player while patrolling
             animator.SetBool("isMoving", true); // Set moving animation on
         }
         else if (state == MonsterStates.Idle)
         {
-            Debug.Log("Monster is idle and watching player."); // Debug message for idle state
             WatchPlayer(); // Watch the player while idling
             animator.SetBool("isMoving", false); // Set moving animation off
         }
     }
 
-    void GoToNextPatrolPoint()
-    {
-        if (patrolPoints.Length == 0) return;
-
-        // Set the destination to the next patrol point
-        agent.SetDestination(patrolPoints[currentPatrolIndex].position);
-        agent.isStopped = false; // Allow movement again
-        Debug.Log("Moving to Patrol Point: " + currentPatrolIndex + " at Position: " + agent.destination); // Debug patrol point details
-        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-    }
-
-    void Patrol()
-    {
-        // Check if the agent is actively calculating a path
-        if (agent.pathStatus == NavMeshPathStatus.PathComplete)
-        {
-            Debug.Log("Path is complete. Agent is on a valid path to the patrol point.");
-        }
-        else if (agent.pathStatus == NavMeshPathStatus.PathPartial)
-        {
-            Debug.LogWarning("Partial path detected. Agent may not reach the patrol point.");
-        }
-        else if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
-        {
-            Debug.LogError("Invalid path! Agent cannot reach the patrol point.");
-            return; // Exit the function if the path is invalid
-        }
-
-        // Continue to check remaining distance and move to the next patrol point
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.1f)
-        {
-            Debug.Log("Arrived at Patrol Point: " + currentPatrolIndex); // Debug message for arrival at patrol point
-            GoToNextPatrolPoint();
-        }
-    }
-
-
-    void CheckForPlayer()
-    {
-        float distanceToPlayer = Vector3.Distance(player.position, transform.position);
-        Debug.Log("Distance to Player: " + distanceToPlayer); // Debug player distance
-
-        if (distanceToPlayer < detectionRange)
-        {
-            state = MonsterStates.Chasing;
-            PlayChaseSound();  // Play chase sound
-            Debug.Log("Player detected! Switching to Chasing state."); // Debug player detection
-        }
-    }
-
     void ChasePlayer()
     {
-        agent.SetDestination(player.position);
-        Debug.Log("Chasing player to position: " + player.position); // Debug target player position
+        if (!isActive) return; // Ensure the monster is active before chasing
 
+        // Calculate the distance between the monster and the player
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
-        if (distanceToPlayer > detectionRange)
+
+        // Start the chase sound if not already playing
+        if (distanceToPlayer > 20f && !chaseAudioSource.isPlaying && chaseSound != null)
         {
-            state = MonsterStates.Patroling;  // Switch back to patrolling if the player goes out of range
-            GoToNextPatrolPoint();  // Return to patrolling at the next patrol point
-            Debug.Log("Player out of range! Switching to Patrolling state."); // Debug player out of range
+            chaseAudioSource.clip = chaseSound;
+            chaseAudioSource.loop = true; // Ensure the chase sound loops
+            chaseAudioSource.Play();
         }
+
+        // Roar when the monster is within 20 units of the player (and roar hasn't been triggered yet)
+        if (distanceToPlayer <= 20f && !hasRoared && roarSound != null)
+        {
+            roarAudioSource.clip = roarSound;
+            roarAudioSource.loop = false; // Roar sound plays once
+            roarAudioSource.Play();
+            hasRoared = true; // Set the flag to prevent multiple roars
+        }
+
+        // Adjust the speed based on the distance to the player
+        chaseSpeed = Mathf.Lerp(3f, 10f, distanceToPlayer / 20f); // Adjust speed range as needed
+
+        // Always update the monster's destination to the player's current position
+        if (agent.isActiveAndEnabled) // Ensure the NavMeshAgent is active
+        {
+            agent.SetDestination(player.position); // Set the destination to the player's current position
+            agent.isStopped = false;  // Ensure the agent is not stopped during the chase
+
+            // Dynamically adjust the speed based on the distance to the player
+            agent.speed = chaseSpeed; // Set the agent's speed based on the distance
+        }
+
+        // Log the distance to the player and target position
+        Debug.Log("Chasing player to position: " + player.position + " | Distance to player: " + distanceToPlayer);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -190,10 +155,10 @@ public class MonsterAITest : MonoBehaviour
 
     void PlayChaseSound()
     {
-        if (chaseSound != null)
+        if (chaseSound != null && !chaseAudioSource.isPlaying)
         {
-            audioSource.clip = chaseSound;
-            audioSource.Play();
+            chaseAudioSource.clip = chaseSound;
+            chaseAudioSource.Play();
             Debug.Log("Playing chase sound."); // Debug chase sound
         }
     }
@@ -202,14 +167,15 @@ public class MonsterAITest : MonoBehaviour
     {
         if (killSound != null)
         {
-            audioSource.clip = killSound;
-            audioSource.Play();
+            killAudioSource.clip = killSound;
+            killAudioSource.Play();
             Debug.Log("Playing kill sound."); // Debug kill sound
         }
     }
 
     void GameOver()
     {
+        chaseAudioSource.Stop();
         Debug.Log("Game Over triggered."); // Debug Game Over
         StartCoroutine(MoveCameraToMouth());
 
@@ -228,12 +194,12 @@ public class MonsterAITest : MonoBehaviour
         {
             grain.intensity.value = 6.0f;  // Example intensity for grain effect
         }
+
         // Hide evidence UI when game over is triggered
         if (EvidenceTracker.Instance != null)
         {
-            EvidenceTracker.Instance.HideEvidenceTracker(); // Hide the evidence UI
+            EvidenceTracker.Instance.HideEvidenceUI(); // Hide the evidence UI
         }
-
     }
 
     IEnumerator MoveCameraToMouth()
@@ -283,7 +249,6 @@ public class MonsterAITest : MonoBehaviour
         ShowGameOverUI(); // Show the Game Over screen
     }
 
-
     void ShowGameOverUI()
     {
         gameOverUI.SetActive(true); // Activate the Game Over screen
@@ -292,7 +257,6 @@ public class MonsterAITest : MonoBehaviour
         Cursor.visible = true;
     }
 
-
     public void RestartGame()
     {
         Debug.Log("Restart Game button clicked!");
@@ -300,38 +264,43 @@ public class MonsterAITest : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload the current scene
+
+        // Reset the game over UI
+        gameOverUI.SetActive(false);
     }
 
-    // Method to activate the monster
     public void ActivateMonster()
     {
         if (!mainMonster) return; // Only activate if this is the main monster
 
-        isActive = true; // Set the monster to active
-        agent.isStopped = false; // Allow movement
-        state = MonsterStates.Patroling; // Start patrolling
-        GoToNextPatrolPoint(); // Move to the next patrol point
-        Debug.Log("Monster Activated. State: " + state);
+        // Check if all evidence has been collected before activating the monster
+        if (EvidenceTracker.Instance.GetCollectedEvidenceCount() != EvidenceTracker.Instance.evidenceList.Count)
+        {
+            Debug.Log("Not all evidence collected yet.");
+            return; // Don't activate monster if evidence is incomplete
+        }
+
+        isActive = true;
+        state = MonsterStates.Chasing;  // Set state to chasing
     }
 
     public void DeactivateMonster()
     {
-        if (!mainMonster) return; // Only deactivate if this is the main monster
-
-        isActive = false; // Set the monster to inactive
-        agent.isStopped = true; // Stop any movement
-        state = MonsterStates.Idle; // Switch to the idle state
-        animator.SetBool("isMoving", false); // Ensure the moving animation is off
-        Debug.Log("Monster Deactivated. State: " + state);
-        WatchPlayer(); // Optionally keep watching the player while inactive
+        isActive = false;
+        state = MonsterStates.Idle; // Set state to idle
     }
 
-    // Teleport the monster and handle idle behavior based on toggle
+    public void WatchPlayer()
+    {
+        // Make sure the monster watches the player when idle
+        transform.LookAt(player);
+    }
+
     public void TeleportMonster(Transform trans) => TeleportMonster(trans.position);
 
     public void TeleportMonster(Vector3 position)
     {
-        if (!mainMonster) return; // Only teleport if this is the main monster
+        if (!mainMonster || isActive) return; // Don't teleport if the monster is active
 
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
 
@@ -342,19 +311,14 @@ public class MonsterAITest : MonoBehaviour
             transform.position = hit.position;
             agent.Warp(hit.position);
 
-            // Handle idle or patrolling state based on the flag
-            if (shouldIdleOnTeleport)
-            {
-                DeactivateMonster();
-                Debug.Log("Monster Teleported. State: " + state);
-            }
-            else
-            {
-                // If the toggle is disabled, resume patrolling or chasing
-                state = MonsterStates.Patroling; // Adjust to your specific state
-                GoToNextPatrolPoint();
-                Debug.Log("Monster Teleported and is now Patrolling. State: " + state);
-            }
+            // Set monster state to Idle and ensure it watches the player
+            state = MonsterStates.Idle;  // Ensure it is in the idle state
+            animator.SetBool("isMoving", false);  // Stop any movement animation
+
+            // Have the monster continue watching the player
+            WatchPlayer();
+
+            Debug.Log("Monster teleported to position: " + hit.position); // Debug teleportation
         }
         else
         {
@@ -362,25 +326,16 @@ public class MonsterAITest : MonoBehaviour
             Debug.LogWarning("Teleport destination is not on the NavMesh.");
         }
     }
-    public void ForceChasePlayer()
+    public void StopChaseMusic()
     {
-        state = MonsterStates.Chasing;  // Set the monster's state to chasing
-
-        agent.isStopped = true;  // Stop the monster from patrolling
-        agent.speed *= 2;  // Double the speed for chasing
-        agent.SetDestination(player.position);  // Set the destination to the player's position
-
-        PlayChaseSound();  // Play the chase sound (optional)
-        Debug.Log("Monster forced to chase the player with doubled speed.");  // Debug message
-    }
-    // Monster watches the player while idling
-    void WatchPlayer()
-    {
-        // Rotate to face the player
-        Vector3 direction = player.position - transform.position;
-        direction.y = 0; // Keep the rotation flat on the Y-axis
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2f);
-        Debug.Log("Monster is watching the player."); // Debug watching player
+        if (chaseAudioSource != null && chaseAudioSource.isPlaying)
+        {
+            chaseAudioSource.Stop();
+            Debug.Log("Chase music stopped.");
+        }
     }
 }
+
+
+
+   
