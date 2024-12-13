@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class TriggerDialogue : MonoBehaviour
 {
@@ -57,11 +57,12 @@ public class TriggerDialogue : MonoBehaviour
         {
             if (!HasTriggered)
             {
+                Debug.Log("Evidence Triggered!");  // Debug log to confirm trigger hit
                 StartCoroutine(FocusOnObjectAndTriggerDialogue());
 
                 if (isEvidenceTrigger && evidence != null)
                 {
-                    // Only collect evidence if this trigger is set to be an evidence trigger
+                    Debug.Log($"Collecting evidence: {evidence.evidenceName}"); // Confirm evidence is being passed
                     EvidenceTracker.Instance.CollectEvidence(evidence);
                 }
 
@@ -71,7 +72,6 @@ public class TriggerDialogue : MonoBehaviour
     }
 
     private IEnumerator FocusOnObjectAndTriggerDialogue() // This is correct
-
     {
         if (FocusObject == null)
         {

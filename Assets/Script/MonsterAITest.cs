@@ -221,6 +221,12 @@ public class MonsterAITest : MonoBehaviour
         {
             grain.intensity.value = 6.0f;  // Example intensity for grain effect
         }
+        // Hide evidence UI when game over is triggered
+        if (EvidenceTracker.Instance != null)
+        {
+            EvidenceTracker.Instance.HideEvidenceTracker(); // Hide the evidence UI
+        }
+
     }
 
     IEnumerator MoveCameraToMouth()

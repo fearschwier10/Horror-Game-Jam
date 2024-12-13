@@ -37,14 +37,16 @@ public class EvidenceGlow : MonoBehaviour
     // Public method to stop the glow effect
     public void StopGlow()
     {
-        isGlowing = false; // Disable the glow
-        material.SetColor("_EmissionColor", Color.black); // Set emission color to black to stop glowing
-        DynamicGI.SetEmissive(objectRenderer, Color.black); // Disable the GI emission
-    }
-
-    // Public method to resume the glow effect
-    public void StartGlow()
-    {
-        isGlowing = true; // Enable the glow
+        Debug.Log($"Stopping glow for {gameObject.name}");
+        if (material != null)
+        {
+            isGlowing = false;
+            material.SetColor("_EmissionColor", Color.black);
+            DynamicGI.SetEmissive(objectRenderer, Color.black);
+        }
+        else
+        {
+            Debug.LogWarning("Material is null in StopGlow!");
+        }
     }
 }
